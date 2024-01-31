@@ -1,34 +1,55 @@
-CC = cc 
-
-CFLAGS = -Wextra -Wall -Werror
-
-HDR = so_long.h 
-
 NAME = so_long
+
+CC = cc
+
+CFLAGS = -Wextra -Wall -Werror -g
+
+HDR = so_long.h
+
+LIB_HDR = libft/libft.h
+
+LIB_AR = libft/libft.a
+
+FTLINKER = -Llibft -lft
+
+XINCLUDE = -I minilibx/
+
+XFLAG = -lXext -lX11 -lm
 
 #--------Sources--------#
 
 SRC = \
-	main.c
+	main.c \
+	window/window_spawn.c
 
-OBJ = (SRC:.c=.o)
+OBJ = $(SRC:%.c=%.o)
 
 #---------Rules---------#
 
-all: $(NAME)
+all : $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+%.o: %.c $(HDR) $(LIB_AR)
+	$(CC) $(CFLAGS) $(XINCLUDE) -O3 -c $< -o $(<:.c=.o)
 
-$(NAME): $(OBJ) $(HDR)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME) : mlx $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(XINCLUDE) -Lminilibx/ -lmlx $(XFLAG) $(FTLINKER)
+
+mlx: force
+	$(MAKE) -C minilibx
+
+$(LIB_AR): force
+	$(MAKE) -C libft
 
 clean:
+	$(MAKE) -C libft clean
+	$(MAKE) -C minilibx clean
 	rm -f $(OBJ)
 
 fclean:
+	$(MAKE) -C libft fclean
 	rm -f $(OBJ) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re force
+
