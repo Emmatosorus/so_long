@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/01/31 18:06:24 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:22:23 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,51 @@
 # define SO_LONG_H
 
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "minilibx/mlx.h"
-# include "libft/libft.h"
+# include "libs/minilibx/mlx.h"
+# include "libs/libft/libft.h"
 
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
 
-typedef struct	s_data
+# define PLAYER_PATH "./sprites/actor/actor_down.xpm"
+
+typedef struct	s_parse
+{
+	char 		**map;
+	char		*file_path;
+	int 		map_size[2];
+}				t_parse;
+
+typedef struct	s_img
 {
 	void		*img;
 	char		*adr;
 	int			bpp;
 	int 		line_len;
 	int 		endian;
-}				t_data;
+}				t_img;
 
 typedef struct	s_var
 {
-	void	*mlx;
-	void	*win;
-	int 	player_x;
-	int 	player_y;
-	bool	Key_W;
-	bool	Key_A;
-	bool	Key_S;
-	bool	Key_D;
-}			t_var;
+	void		*mlx;
+	void		*win;
+	t_img		map_img;
+	int 		map_x;
+	int 		map_y;
+	bool		Key_W;
+	bool		Key_A;
+	bool		Key_S;
+	bool		Key_D;
+}				t_var;
 
-int	spawn_window(t_var *var);
+void	error_exit(t_parse *map);
+void	map_parse(char *filename, t_parse *map_layout);
+void	verify_map(t_parse *map);
+void 	window_init(t_var *var);
 
 #endif

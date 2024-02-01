@@ -6,73 +6,43 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:41:48 by epolitze          #+#    #+#             */
-/*   Updated: 2024/01/31 18:15:51 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:17:59 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_close(t_var *vars)
+void	game()
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
-	vars->mlx = NULL;
-	exit(EXIT_SUCCESS);
+	//map_init(&var);
+	//window_init(&var);
+	//var.map.img = mlx_new_image(var.mlx, 64, 64);
+
+	//mlx_loop_hook(var.mlx, /* function that updates screen*/, &var);
+
+	//mlx_put_image_to_window(var->mlx, var->win, var->map.img, 200 + var->player_x, 200 + var->player_y);
+	//ft_move(var);
+	//mlx_hook(var.win, 2, 1L<<0, ft_key_press, &var);
+	//mlx_hook(var.win, 3, 1L<<1, ft_key_release, &var);
+	//mlx_hook(var.win, 17, 0L, ft_close, &var);
+	//mlx_loop(var.mlx);
+}
+
+int	main(int ac, char **av)
+{
+	//t_var	var;
+	t_parse	map;
+
+	if (ac != 2)
+		exit(EXIT_FAILURE);
+	// only take .ber files
+	map_parse(av[1], &map);
+	//game();
+	error_exit(&map);
 	return (0);
 }
 
-int ft_key_press(int keycode, t_var *vars)
-{
-	if (keycode == 65307)
-		ft_close(vars);
-	else if (keycode == KEY_W)
-	{
-		vars->Key_W = true;
-	}
-	else if (keycode == KEY_A)
-	{
-		vars->Key_A = true;
-	}
-	else if (keycode == KEY_S)
-	{
-		vars->Key_S = true;
-	}
-	else if (keycode == KEY_D)
-	{
-		vars->Key_D = true;
-	}
-	return (0);
-}
 
-int	ft_key_release(int keycode, t_var *vars)
-{
-	if (keycode == KEY_W)
-		vars->Key_W = false;
-	else if (keycode == KEY_A)
-		vars->Key_A = false;
-	else if (keycode == KEY_S)
-		vars->Key_S = false;
-	else if (keycode == KEY_D)
-		vars->Key_D = false;
-	return (0);
-}
-
-int	main(void)
-{
-	t_var	var;
-
-	var.player_x = 200;
-	var.player_y = 200;
-	var.mlx = mlx_init();
-	var.win = mlx_new_window(var.mlx, 1900, 1500, "It's so long..");
-
-	spawn_window(&var);
-
-	mlx_loop_hook(var.mlx, spawn_window, &var);
-	mlx_hook(var.win, 2, 1L<<0, ft_key_press, &var);
-	mlx_hook(var.win, 3, 1L<<1, ft_key_release, &var);
-	mlx_hook(var.win, 17, 0L, ft_close, &var);
-	mlx_loop(var.mlx);
-	return (0);
-}
+//1 verifie la map
+//2 init mon image
+//3 je lance monjeux et le boulce infini
