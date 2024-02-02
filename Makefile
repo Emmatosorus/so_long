@@ -20,9 +20,10 @@ XFLAG = -lXext -lX11 -lm
 
 SRC = \
 	main.c \
-	error/error_manager.c \
+	exit/exit_manager.c \
 	parsing/main_parse.c \
 	parsing/map_check.c \
+	parsing/solve_map.c \
 	window/window_init.c
 
 OBJ = $(SRC:%.c=%.o)
@@ -36,9 +37,8 @@ all : $(NAME)
 
 $(NAME) : mlx $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(XINCLUDE) -Llibs/minilibx/ -lmlx $(XFLAG) $(FTLINKER)
-	$(MAKE) clean
 
-mlx: force
+mlx:
 	$(MAKE) -C libs/minilibx
 
 $(LIB_AR): force

@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:41:48 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/01 18:17:59 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:53:30 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	// only take .ber files
 	map_parse(av[1], &map);
 	//game();
-	error_exit(&map);
+	success_exit(&map);
 	return (0);
 }
 

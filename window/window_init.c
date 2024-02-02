@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/01 16:09:08 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:55:29 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_key_release(int keycode, t_var *vars)
 	return (0);
 }
 
-void	map_init(t_var *var)
+void	map_img_init(t_var *var)
 {
 	var->map_x = 0;
 	var->map_y = 0;
