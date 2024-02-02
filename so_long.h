@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 17:42:19 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:08:38 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_parse
 	int			p_pos[2];
 	int 		coins;
 	int 		exit;
-	int 		enemy;
+	int 		foe;
 }				t_parse;
 
 typedef struct	s_xpm
@@ -47,7 +47,7 @@ typedef struct	s_xpm
 	int 	width;
 }				t_xpm;
 
-typedef struct	s_main
+typedef struct	s_var
 {
 	void		*mlx;
 	void		*win;

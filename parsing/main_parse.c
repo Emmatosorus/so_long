@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:39:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 13:24:38 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:04:46 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	map_init(t_parse *map)
 	map->player = 0;
 	map->coins = 0;
 	map->exit = 0;
-	map->enemy = 0;
+	map->foe = 0;
 }
 
 void	map_parse(char *filename, t_parse *map)

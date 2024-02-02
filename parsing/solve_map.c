@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 17:18:08 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:05:11 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	init_map_copy(t_parse *cpy, t_parse *map)
 	cpy->p_pos[1] = map->p_pos[1];
 	cpy->coins = map->coins;
 	cpy->exit = map->exit;
-	cpy->enemy = map->enemy;
+	cpy->foe = map->foe;
 }
 
 void	solve(t_parse *map, int x, int y)

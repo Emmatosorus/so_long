@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 18:48:15 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:20:18 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	xpm_inits(t_var *var)
 {
+	var->xpm = (t_xpm **)malloc(6 * sizeof(t_xpm *));
+	if (!var->xpm)
+		error_exit(*var);
 	// initialise all the sprites
 }
 

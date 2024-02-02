@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:37:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 13:37:01 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:04:55 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	count_assets(t_parse *map, int x, int y)
 	else if (c == 'C')
 		map->coins++;
 	else if (c == 'F')
-		map->enemy++;
+		map->foe++;
 	else if (c == '1' || c == '0')
 		return ;
 	else
