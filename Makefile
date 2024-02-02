@@ -24,7 +24,7 @@ SRC = \
 	parsing/main_parse.c \
 	parsing/map_check.c \
 	parsing/solve_map.c \
-	window/window_init.c
+	game/window_init.c
 
 OBJ = $(SRC:%.c=%.o)
 

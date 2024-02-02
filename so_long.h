@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 16:50:37 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:42:19 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,19 @@ typedef struct	s_parse
 	int 		enemy;
 }				t_parse;
 
-typedef struct	s_img
+typedef struct	s_xpm
 {
-	void		*img;
-	char		*adr;
-	int			bpp;
-	int 		line_len;
-	int 		endian;
-}				t_img;
+	void	*img;
+	char 	*path;
+	int		height;
+	int 	width;
+}				t_xpm;
 
-typedef struct	s_var
+typedef struct	s_main
 {
 	void		*mlx;
 	void		*win;
-	t_img		map_img;
+	t_xpm		**xpm;
 	int 		map_x;
 	int 		map_y;
 	bool		Key_W;
@@ -65,6 +64,8 @@ void	ft_free(t_parse *map);
 void	error_exit(t_parse *map);
 void	success_exit(t_parse *map);
 void	map_parse(char *filename, t_parse *map_layout);
+void	main_init(t_var *var);
+void	game(t_parse *map);
 void	verify_map(t_parse *map);
 void	solve_map(t_parse *map);
 void 	window_init(t_var *var);

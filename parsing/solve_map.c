@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 17:15:09 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:18:08 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	solve_map(t_parse *map)
 		ft_free(&map_copy);
 		error_exit(map);
 	}
+	ft_free(&map_copy);
 }
