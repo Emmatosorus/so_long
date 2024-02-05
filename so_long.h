@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 19:08:38 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:34:56 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-
-# define PLAYER_PATH "./sprites/actor/actor_down.xpm"
 
 typedef struct	s_parse
 {
@@ -52,6 +50,7 @@ typedef struct	s_var
 	void		*mlx;
 	void		*win;
 	t_xpm		**xpm;
+	void		*map;
 	int 		map_x;
 	int 		map_y;
 	bool		Key_W;
@@ -63,11 +62,14 @@ typedef struct	s_var
 void	ft_free(t_parse *map);
 void	error_exit(t_parse *map);
 void	success_exit(t_parse *map);
+void	game_error_exit(t_var *var);
+void	build_map(t_var *var, t_parse *map);
 void	map_parse(char *filename, t_parse *map_layout);
 void	main_init(t_var *var);
 void	game(t_parse *map);
 void	verify_map(t_parse *map);
 void	solve_map(t_parse *map);
 void 	window_init(t_var *var);
+int 	ft_close(t_var *var);
 
 #endif

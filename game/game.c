@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 17:42:00 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:29:56 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	game(t_parse *map)
 {
 	t_var	*var;
 
+	var = NULL;
+	(void)map;
 	main_init(var);
-	//var.map.img = mlx_new_image(var.mlx, 64, 64);
+	//build_map(var, map);
+	//var->map = mlx_new_image(var->mlx, 64, 64);
 
 	//mlx_loop_hook(var.mlx, /* function that updates screen*/, &var);
 
@@ -25,6 +28,6 @@ void	game(t_parse *map)
 	//ft_move(var);
 	//mlx_hook(var.win, 2, 1L<<0, ft_key_press, &var);
 	//mlx_hook(var.win, 3, 1L<<1, ft_key_release, &var);
-	//mlx_hook(var.win, 17, 0L, ft_close, &var);
-	//mlx_loop(var.mlx);
+	mlx_hook(var->win, 17, 0L, ft_close, &var);
+	mlx_loop(var->mlx);
 }
