@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 15:29:12 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:48:56 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	what_img(int x, int y, char **map)
 void	build_map(t_main **main)
 {
 	int	pos[2];
-	int img;
+	int	img;
 
 	pos[0] = 0;
 	pos[1] = 0;

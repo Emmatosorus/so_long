@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 18:24:43 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 19:01:22 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	make_xpm(t_main **main, char *path, int pos)
 {
 	(*main)->var->xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!(*main)->var->xpm[pos])
-		error_exit(main, "Malloc has failed : inits.c : 19"); //need to free map
+		error_exit(main, "Malloc has failed : inits.c : 19");
 	(*main)->var->xpm[pos]->img = mlx_xpm_file_to_image((*main)->var->mlx, \
 		path, &(*main)->var->xpm[pos]->width, &(*main)->var->xpm[pos]->height);
 }
@@ -26,7 +26,6 @@ void	xpm_inits(t_main **main)
 	(*main)->var->xpm = (t_xpm **)malloc(15 * sizeof(t_xpm *));
 	if (!(*main)->var->xpm)
 		error_exit(main, "Malloc has failed : inits.c : 26");
-	// initialise all the sprites
 	make_xpm(main, "./sprites/actor/actor_down.xpm", 0);
 	make_xpm(main, "./sprites/actor/actor_down_rev.xpm", 1);
 	make_xpm(main, "./sprites/actor/actor_up.xpm", 2);
@@ -60,8 +59,8 @@ void	main_init(t_main **main)
 	xpm_inits(main);
 	(*main)->var->player_x = 0;
 	(*main)->var->player_y = 0;
-	(*main)->var->Key_W = false;
-	(*main)->var->Key_A = false;
-	(*main)->var->Key_S = false;
-	(*main)->var->Key_D = false;
+	(*main)->var->key_w = false;
+	(*main)->var->key_a = false;
+	(*main)->var->key_s = false;
+	(*main)->var->key_d = false;
 }

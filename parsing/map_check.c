@@ -6,16 +6,16 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:37:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 14:59:19 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:52:33 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+#include "../so_long.h"
 
 void	is_wall(t_main **main, int y)
 {
-	int 	pos;
-	char 	*line;
+	int		pos;
+	char	*line;
 
 	pos = 0;
 	line = (*main)->map->map[y];
@@ -29,7 +29,7 @@ void	is_wall(t_main **main, int y)
 
 void	count_assets(t_main **main, int x, int y)
 {
-	char c;
+	char	c;
 
 	c = (*main)->map->map[y][x];
 	if (c == 'P' && (*main)->map->player == 0)
@@ -54,7 +54,7 @@ void	count_assets(t_main **main, int x, int y)
 
 void	is_closed_n_valid(t_main **main)
 {
-	int pos[2];
+	int	pos[2];
 
 	pos[1] = 0;
 	is_wall(main, pos[1]);
@@ -82,8 +82,8 @@ void	is_closed_n_valid(t_main **main)
 
 void	check_len(t_main **main)
 {
-	int 	line;
-	int 	len;
+	int	line;
+	int	len;
 
 	line = 0;
 	while (line < (*main)->map->map_size[1])
@@ -95,8 +95,8 @@ void	check_len(t_main **main)
 			error_exit(main, "Map isn't a rectangle");
 		line++;
 	}
-
 }
+
 void	verify_map(t_main **main)
 {
 	check_len(main);

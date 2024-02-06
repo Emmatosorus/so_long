@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 18:30:44 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:45:06 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_xpm(t_main **main)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 15)
@@ -33,7 +33,7 @@ void	ft_free_mlx(t_main **main)
 	free((*main)->var);
 }
 
-int ft_close(t_main **main)
+int	ft_close(t_main **main)
 {
 	ft_free_xpm(main);
 	ft_free_mlx(main);

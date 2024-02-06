@@ -6,13 +6,13 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 15:05:24 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:52:47 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static char **cpy_map(t_main **main)
+static char	**cpy_map(t_main **main)
 {
 	int		i;
 	char	**cpy;

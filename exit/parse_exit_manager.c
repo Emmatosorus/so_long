@@ -6,11 +6,11 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 18:42:14 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:45:17 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+#include "../so_long.h"
 
 void	ft_free_map(t_parse *map)
 {

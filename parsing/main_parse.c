@@ -6,17 +6,17 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:39:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 14:48:00 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:51:47 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+#include "../so_long.h"
 
-static int		count_lines(char *file_path)
+static int	count_lines(char *file_path)
 {
 	int		fd;
-	int 	count[2];
-	char 	*str;
+	int		count[2];
+	char	*str;
 
 	count[0] = 0;
 	count[1] = 0;
@@ -37,9 +37,9 @@ static int		count_lines(char *file_path)
 
 static void	get_map_layout(t_main **main)
 {
-	char 	*line;
-	int 	fd;
-	int 	count[2];
+	char	*line;
+	int		fd;
+	int		count[2];
 
 	line = NULL;
 	count[0] = 0;
@@ -64,7 +64,7 @@ static void	get_map_layout(t_main **main)
 
 static void	rm_cr(t_main **main)
 {
-	int count[2];
+	int	count[2];
 
 	count[0] = 0;
 	while ((*main)->map->map_size[1] > count[0])
