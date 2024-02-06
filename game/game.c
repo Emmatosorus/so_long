@@ -6,28 +6,26 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/05 18:29:56 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:55:52 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	game(t_parse *map)
+void	game(t_main **main)
 {
-	t_var	*var;
+	int i;
 
-	var = NULL;
-	(void)map;
-	main_init(var);
-	//build_map(var, map);
-	//var->map = mlx_new_image(var->mlx, 64, 64);
+	i = -1;
+	main_init(main);
+	build_map(main);
 
 	//mlx_loop_hook(var.mlx, /* function that updates screen*/, &var);
 
 	//mlx_put_image_to_window(var->mlx, var->win, var->map.img, 200 + var->player_x, 200 + var->player_y);
 	//ft_move(var);
-	//mlx_hook(var.win, 2, 1L<<0, ft_key_press, &var);
-	//mlx_hook(var.win, 3, 1L<<1, ft_key_release, &var);
-	mlx_hook(var->win, 17, 0L, ft_close, &var);
-	mlx_loop(var->mlx);
+	mlx_hook((*main)->var->win, 2, 1L<<0, ft_key_press, main);
+	mlx_hook((*main)->var->win, 3, 1L<<1, ft_key_release, main);
+	mlx_hook((*main)->var->win, 17, 0L, ft_close, main);
+	mlx_loop((*main)->var->mlx);
 }

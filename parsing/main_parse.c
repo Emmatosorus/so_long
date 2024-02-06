@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:39:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 19:04:46 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:48:00 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int		count_lines(char *file_path)
 	return (count[0]);
 }
 
-static void	get_map_layout(t_parse *map)
+static void	get_map_layout(t_main **main)
 {
 	char 	*line;
 	int 	fd;
@@ -44,16 +44,17 @@ static void	get_map_layout(t_parse *map)
 	line = NULL;
 	count[0] = 0;
 	count[1] = 0;
-	map->map = (char **)malloc(map->map_size[1] * sizeof(char *));
-	if (!map->map)
-		error_exit(map);
-	fd = open(map->file_path, O_RDONLY);
+	(*main)->map->map = \
+		(char **)malloc((*main)->map->map_size[1] * sizeof(char *));
+	if (!(*main)->map->map)
+		error_exit(main, "Malloc has failed : main_parse.c : 49");
+	fd = open((*main)->map->file_path, O_RDONLY);
 	while (line != NULL || (count[0] == 0 && count[1] == 0))
 	{
 		line = get_next_line(fd);
 		if (line != NULL)
 		{
-			map->map[count[0]++] = ft_strdup(line);
+			(*main)->map->map[count[0]++] = ft_strdup(line);
 			free(line);
 		}
 		count[1]++;
@@ -61,43 +62,44 @@ static void	get_map_layout(t_parse *map)
 	close(fd);
 }
 
-static void	rm_cr(t_parse *map)
+static void	rm_cr(t_main **main)
 {
 	int count[2];
 
 	count[0] = 0;
-	while (map->map_size[1] > count[0])
+	while ((*main)->map->map_size[1] > count[0])
 	{
 		count[1] = 0;
-		while (map->map[count[0]][count[1]] != '\0')
+		while ((*main)->map->map[count[0]][count[1]] != '\0')
 		{
-			if (map->map[count[0]][count[1]] == '\n')
-				map->map[count[0]][count[1]] = '\0';
+			if ((*main)->map->map[count[0]][count[1]] == '\n')
+				(*main)->map->map[count[0]][count[1]] = '\0';
 			count[1]++;
 		}
 		count[0]++;
 	}
 }
 
-static void	map_init(t_parse *map)
+static void	map_init(t_main **main)
 {
-	map->map = NULL;
-	map->file_path = "levels/";
-	map->player = 0;
-	map->coins = 0;
-	map->exit = 0;
-	map->foe = 0;
+	(*main)->map->map = NULL;
+	(*main)->map->file_path = "levels/";
+	(*main)->map->player = 0;
+	(*main)->map->coins = 0;
+	(*main)->map->exit = 0;
+	(*main)->map->foe = 0;
 }
 
-void	map_parse(char *filename, t_parse *map)
+void	map_parse(char *filename, t_main **main)
 {
-	map_init(map);
-	map->file_path = ft_strjoin(map->file_path, filename);
-	map->map_size[1] = count_lines(map->file_path);
-	get_map_layout(map);
-	free(map->file_path);
-	map->file_path = NULL;
-	rm_cr(map);
-	verify_map(map);
-	solve_map(map);
+	map_init(main);
+	(*main)->map->file_path = ft_strjoin((*main)->map->file_path, filename);
+	if (!(*main)->map->file_path)
+		error_exit(main, \
+			"Malloc has failed : ft_strjoin.c : main_parse.c : 95");
+	(*main)->map->map_size[1] = count_lines((*main)->map->file_path);
+	get_map_layout(main);
+	rm_cr(main);
+	verify_map(main);
+	solve_map(main);
 }

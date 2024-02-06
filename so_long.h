@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/05 18:34:56 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:28:19 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,41 @@ typedef struct	s_var
 	void		*mlx;
 	void		*win;
 	t_xpm		**xpm;
-	void		*map;
-	int 		map_x;
-	int 		map_y;
+	void		*player;
+	int 		player_x;
+	int 		player_y;
 	bool		Key_W;
 	bool		Key_A;
 	bool		Key_S;
 	bool		Key_D;
 }				t_var;
 
-void	ft_free(t_parse *map);
-void	error_exit(t_parse *map);
-void	success_exit(t_parse *map);
-void	game_error_exit(t_var *var);
-void	build_map(t_var *var, t_parse *map);
-void	map_parse(char *filename, t_parse *map_layout);
-void	main_init(t_var *var);
-void	game(t_parse *map);
-void	verify_map(t_parse *map);
-void	solve_map(t_parse *map);
-void 	window_init(t_var *var);
-int 	ft_close(t_var *var);
+typedef struct	s_main
+{
+	t_var	*var;
+	t_parse	*map;
+}				t_main;
+
+/* Error Management */
+void	ft_free_map(t_parse *map);
+void	multiple_pos_error(t_main **main);
+void	error_exit(t_main **main, char *reason);
+void	success_exit(t_main **main);
+int		ft_close(t_main **main);
+
+/* Parsing */
+void	map_parse(char *filename, t_main **main);
+void	verify_map(t_main **main);
+void	solve_map(t_main **main);
+
+/* Game */
+void	build_map(t_main **main);
+void	main_init(t_main **main);
+void	game(t_main **main);
+void 	window_init(t_main **main);
+
+/* User Input */
+int ft_key_press(int keycode, t_main **main);
+int	ft_key_release(int keycode, t_main **main);
 
 #endif

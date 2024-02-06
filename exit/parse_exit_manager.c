@@ -6,41 +6,66 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 12:55:02 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:42:14 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../so_long.h"
 
-void	ft_free(t_parse *map)
+void	ft_free_map(t_parse *map)
 {
 	int		i;
 
 	i = 0;
-	ft_printf("%d\n", map->map_size[1]);
-	while (map->map_size[1] - 1 >= i)
+	while (map->map_size[1] > i)
 	{
-		ft_printf("%s\n", map->map[i]);
 		free(map->map[i]);
+		map->map[i] = NULL;
 		i++;
 	}
 	free(map->map);
+	map->map = NULL;
 }
 
-void	error_exit(t_parse *map)
+void	error_exit(t_main **main, char *reason)
 {
-	if (map->file_path != NULL)
-		free(map->file_path);
-	if (map->map != NULL)
-		ft_free(map);
-	ft_printf("\x1b[31;1mError\n\x1b[0m");
+	if ((*main)->map)
+	{
+		if ((*main)->map->file_path != NULL)
+			free((*main)->map->file_path);
+		if ((*main)->map->map != NULL)
+			ft_free_map((*main)->map);
+	}
+	ft_printf("\x1b[31;1m%s\n\x1b[0m", reason);
 	exit(EXIT_FAILURE);
 }
 
-void	success_exit(t_parse *map)
+void	success_exit(t_main **main)
 {
-	if (map->file_path != NULL)
-		free(map->file_path);
-	ft_free(map);
+	if ((*main)->map)
+	{
+		if ((*main)->map->file_path != NULL)
+			free((*main)->map->file_path);
+		if ((*main)->map->map != NULL)
+			ft_free_map((*main)->map);
+	}
 	exit(EXIT_SUCCESS);
+}
+
+void	multiple_pos_error(t_main **main)
+{
+	if ((*main)->map->player != 1)
+	{
+		ft_printf("\x1b[31;1m%d %s\x1b[0m", (*main)->map->player, \
+			"player spawn points instead of 1");
+		error_exit(main, "");
+	}
+	if ((*main)->map->exit != 1)
+	{
+		ft_printf("\x1b[31;1m%d %s\x1b[0m", (*main)->map->exit, \
+			"exits instead of 1");
+		error_exit(main, "");
+	}
+	if ((*main)->map->coins < 1)
+		error_exit(main, "Map must have at least 1 coin");
 }

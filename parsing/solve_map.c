@@ -6,74 +6,74 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/02 19:05:11 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:05:24 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static char **cpy_map(t_parse *map)
+static char **cpy_map(t_main **main)
 {
 	int		i;
 	char	**cpy;
 
-	cpy = (char **)malloc(map->map_size[1] * sizeof(char *));
+	cpy = (char **)malloc((*main)->map->map_size[1] * sizeof(char *));
 	if (!cpy)
-		error_exit(map);
+		error_exit(main, "Malloc has failed : solve_map.c : 20");
 	i = 0;
-	while (map->map_size[1] > i)
+	while ((*main)->map->map_size[1] > i)
 	{
-		cpy[i] = ft_strdup(map->map[i]);
+		cpy[i] = ft_strdup((*main)->map->map[i]);
 		i++;
 	}
 	return (cpy);
 }
 
-static void	init_map_copy(t_parse *cpy, t_parse *map)
+static void	init_map_copy(t_parse *cpy, t_main **main)
 {
-	cpy->map = cpy_map(map);
+	cpy->map = cpy_map(main);
 	cpy->file_path = NULL;
-	cpy->map_size[0] = map->map_size[0];
-	cpy->map_size[1] = map->map_size[1];
-	cpy->player = map->player;
-	cpy->p_pos[0] = map->p_pos[0];
-	cpy->p_pos[1] = map->p_pos[1];
-	cpy->coins = map->coins;
-	cpy->exit = map->exit;
-	cpy->foe = map->foe;
+	cpy->map_size[0] = (*main)->map->map_size[0];
+	cpy->map_size[1] = (*main)->map->map_size[1];
+	cpy->player = (*main)->map->player;
+	cpy->p_pos[0] = (*main)->map->p_pos[0];
+	cpy->p_pos[1] = (*main)->map->p_pos[1];
+	cpy->coins = (*main)->map->coins;
+	cpy->exit = (*main)->map->exit;
+	cpy->foe = (*main)->map->foe;
 }
 
-void	solve(t_parse *map, int x, int y)
+void	solve(t_parse *cpy, int x, int y)
 {
-	if (map->map[y][x] == 'C')
-		map->coins--;
-	if (map->map[y][x] == 'E')
-		map->exit--;
-	map->map[y][x] = '2';
+	if (cpy->map[y][x] == 'C')
+		cpy->coins--;
+	if (cpy->map[y][x] == 'E')
+		cpy->exit--;
+	cpy->map[y][x] = '2';
 	if (y - 1 > 0)
-		if (map->map[y - 1][x] != '2' && map->map[y - 1][x] != '1')
-			solve(map, x, y - 1);
-	if (y + 1 < map->map_size[1])
-		if (map->map[y + 1][x] != '2' && map->map[y + 1][x] != '1')
-			solve(map, x, y + 1);
+		if (cpy->map[y - 1][x] != '2' && cpy->map[y - 1][x] != '1')
+			solve(cpy, x, y - 1);
+	if (y + 1 < cpy->map_size[1])
+		if (cpy->map[y + 1][x] != '2' && cpy->map[y + 1][x] != '1')
+			solve(cpy, x, y + 1);
 	if (x - 1 > 0)
-		if (map->map[y][x - 1] != '2' && map->map[y][x - 1] != '1')
-			solve(map, x - 1, y);
-	if (x + 1 < map->map_size[0])
-		if (map->map[y][x + 1] != '2' && map->map[y][x + 1] != '1')
-			solve(map, x + 1, y - 1);
+		if (cpy->map[y][x - 1] != '2' && cpy->map[y][x - 1] != '1')
+			solve(cpy, x - 1, y);
+	if (x + 1 < cpy->map_size[0])
+		if (cpy->map[y][x + 1] != '2' && cpy->map[y][x + 1] != '1')
+			solve(cpy, x + 1, y - 1);
 }
 
-void	solve_map(t_parse *map)
+void	solve_map(t_main **main)
 {
 	t_parse	map_copy;
 
-	init_map_copy(&map_copy, map);
+	init_map_copy(&map_copy, main);
 	solve(&map_copy, map_copy.p_pos[0], map_copy.p_pos[1]);
 	if (map_copy.coins != 0 || map_copy.exit != 0)
 	{
-		ft_free(&map_copy);
-		error_exit(map);
+		ft_free_map(&map_copy);
+		error_exit(main, "Map isn't solvable");
 	}
-	ft_free(&map_copy);
+	ft_free_map(&map_copy);
 }

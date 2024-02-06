@@ -20,8 +20,8 @@ XFLAG = -lXext -lX11 -lm
 
 SRC = \
 	main.c \
-	exit/game_exit_manager.c \
 	exit/parse_exit_manager.c \
+	exit/game_exit_manager.c \
 	parsing/main_parse.c \
 	parsing/map_check.c \
 	parsing/solve_map.c \

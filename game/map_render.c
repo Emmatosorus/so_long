@@ -6,40 +6,14 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/05 20:37:04 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:29:12 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	put_pixel(int x, int y, int color);
+int	what_img(int x, int y, char **map)
 {
-	/*HOW DO I PRINT A FUCKING PIXEL!!!!!!!!!!!!*/
-}
-
-void	put_sprite(int x, int y, int img_nb, t_var *var)
-{
-	int 	x_save;
-	void	*img;
-
-	img = var->xpm[img_nb]->img;
-	x_save = x;
-	while (y < y + 64)
-	{
-		while (x < x + 64)
-		{
-			put_pixel(x, y, /*HOW DO I GET THE FUCKING COLOR?????*/);
-			x++;
-		}
-		x = x_save;
-		y++;
-	}
-
-}
-
-int	what_img(int x, int y, char **map, t_var *var)
-{
-	int 	img;
 	char	c;
 
 	x /= 64;
@@ -53,22 +27,24 @@ int	what_img(int x, int y, char **map, t_var *var)
 		return (10);
 	else if (c == 'C')
 		return (11);
+	else
+		return (11); // return foe
 }
 
-void	build_map(t_var *var, t_parse *map)
+void	build_map(t_main **main)
 {
 	int	pos[2];
 	int img;
 
 	pos[0] = 0;
 	pos[1] = 0;
-	var->map = mlx_new_image(var->mlx, 64*map->map_size[0], 64*map->map_size[1]);
-	while (pos[1] < 64 * map->map_size[1])
+	while (pos[1] < 64 * (*main)->map->map_size[1])
 	{
-		while (pos[0] < 64 * map->map_size[0])
+		while (pos[0] < 64 * (*main)->map->map_size[0])
 		{
-			img = what_img(pos[0], pos[1], map->map, var);
-			put_sprite(pos[0], pos[1], img, var);
+			img = what_img(pos[0], pos[1], (*main)->map->map);
+			mlx_put_image_to_window((*main)->var->mlx, (*main)->var->win, \
+				(*main)->var->xpm[img]->img, pos[0], pos[1]);
 			pos[0] += 64;
 		}
 		pos[0] = 0;
