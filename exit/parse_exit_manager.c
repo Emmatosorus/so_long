@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 18:45:17 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:56:14 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ void	ft_free_map(t_parse *map)
 
 void	error_exit(t_main **main, char *reason)
 {
-	if ((*main)->map)
+	if (main)
 	{
-		if ((*main)->map->file_path != NULL)
-			free((*main)->map->file_path);
-		if ((*main)->map->map != NULL)
-			ft_free_map((*main)->map);
+		ft_free_xpm(main);
+		ft_free_mlx(main);
+		if ((*main)->map)
+		{
+			if ((*main)->map->file_path != NULL)
+				free((*main)->map->file_path);
+			if ((*main)->map->map != NULL)
+				ft_free_map((*main)->map);
+		}
 	}
 	ft_printf("\x1b[31;1m%s\n\x1b[0m", reason);
 	exit(EXIT_FAILURE);

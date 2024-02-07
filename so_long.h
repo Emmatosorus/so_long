@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 18:55:33 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:05:15 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define WIN_H 1400
+# define WIN_L 1920
 
 typedef struct s_parse
 {
@@ -37,10 +39,18 @@ typedef struct s_parse
 	int			foe;
 }				t_parse;
 
+typedef struct s_data{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct s_xpm
 {
 	void	*img;
-	char	*path;
+	t_data	*data;
 	int		height;
 	int		width;
 }			t_xpm;
@@ -50,9 +60,12 @@ typedef struct s_var
 	void		*mlx;
 	void		*win;
 	t_xpm		**xpm;
-	void		*player;
-	int			player_x;
-	int			player_y;
+	t_data		*map;
+	int			map_x;
+	int			map_y;
+	t_data		*player;
+	int 		player_x;
+	int 		player_y;
 	bool		key_w;
 	bool		key_a;
 	bool		key_s;
@@ -70,6 +83,8 @@ void	ft_free_map(t_parse *map);
 void	multiple_pos_error(t_main **main);
 void	error_exit(t_main **main, char *reason);
 void	success_exit(t_main **main);
+void	ft_free_mlx(t_main **main);
+void	ft_free_xpm(t_main **main);
 int		ft_close(t_main **main);
 
 /* Parsing */
@@ -77,11 +92,18 @@ void	map_parse(char *filename, t_main **main);
 void	verify_map(t_main **main);
 void	solve_map(t_main **main);
 
+/* Initializations */
+void	map_img_init(t_main **main);
+void	player_img_init(t_main **main);
+
 /* Game */
+void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
 void	build_map(t_main **main);
+void	build_player(t_main **main);
 void	main_init(t_main **main);
 void	game(t_main **main);
 void	window_init(t_main **main);
+int		ft_move(t_main **main);
 
 /* User Input */
 int		ft_key_press(int keycode, t_main **main);

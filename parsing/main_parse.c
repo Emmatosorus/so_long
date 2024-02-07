@@ -49,6 +49,7 @@ static void	get_map_layout(t_main **main)
 	if (!(*main)->map->map)
 		error_exit(main, "Malloc has failed : main_parse.c : 49");
 	fd = open((*main)->map->file_path, O_RDONLY);
+
 	while (line != NULL || (count[0] == 0 && count[1] == 0))
 	{
 		line = get_next_line(fd);

@@ -6,22 +6,23 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 19:00:36 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:22:28 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_move(t_main **main)
+int	ft_move(t_main **main)
 {
 	if ((*main)->var->key_w)
-		(*main)->var->player_y--;
+		(*main)->var->map_y++;
 	if ((*main)->var->key_a)
-		(*main)->var->player_x--;
+		(*main)->var->map_x++;
 	if ((*main)->var->key_s)
-		(*main)->var->player_y++;
+		(*main)->var->map_y--;
 	if ((*main)->var->key_d)
-		(*main)->var->player_x++;
+		(*main)->var->map_x--;
+	return (0);
 }
 
 int	ft_key_press(int keycode, t_main **main)

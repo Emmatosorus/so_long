@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/06 19:01:22 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:59:27 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,29 @@ void	make_xpm(t_main **main, char *path, int pos)
 {
 	(*main)->var->xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!(*main)->var->xpm[pos])
-		error_exit(main, "Malloc has failed : inits.c : 19");
+		error_exit(main, "Malloc has failed : inits.c : 17");
+	(*main)->var->xpm[pos]->data = (t_data *)malloc(sizeof(t_data));
+	if (!(*main)->var->xpm[pos]->data)
+		error_exit(main, "Malloc has failed : inits.c : 20");
 	(*main)->var->xpm[pos]->img = mlx_xpm_file_to_image((*main)->var->mlx, \
 		path, &(*main)->var->xpm[pos]->width, &(*main)->var->xpm[pos]->height);
+	(*main)->var->xpm[pos]->height = 0;
+	(*main)->var->xpm[pos]->width = 0;
+	(*main)->var->xpm[pos]->data->bits_per_pixel = 0;
+	(*main)->var->xpm[pos]->data->line_length = 0;
+	(*main)->var->xpm[pos]->data->endian = 0;
+	(*main)->var->xpm[pos]->data->addr = mlx_get_data_addr( \
+		(*main)->var->xpm[pos]->img, \
+		&(*main)->var->xpm[pos]->data->bits_per_pixel, \
+		&(*main)->var->xpm[pos]->data->line_length, \
+		&(*main)->var->xpm[pos]->data->endian);
 }
 
 void	xpm_inits(t_main **main)
 {
 	(*main)->var->xpm = (t_xpm **)malloc(15 * sizeof(t_xpm *));
 	if (!(*main)->var->xpm)
-		error_exit(main, "Malloc has failed : inits.c : 26");
+		error_exit(main, "Malloc has failed : inits.c : 41");
 	make_xpm(main, "./sprites/actor/actor_down.xpm", 0);
 	make_xpm(main, "./sprites/actor/actor_down_rev.xpm", 1);
 	make_xpm(main, "./sprites/actor/actor_up.xpm", 2);
@@ -47,18 +60,24 @@ void	window_init(t_main	**main)
 {
 	(*main)->var->mlx = mlx_init();
 	(*main)->var->win = mlx_new_window((*main)->var->mlx, \
-		64 * (*main)->map->map_size[0], \
-		64 * (*main)->map->map_size[1], "It's so long..");
+		WIN_L, \
+		WIN_H, "It's so long..");
 	if (!(*main)->var->win)
-		error_exit(main, "MLX has failed us once more : inits.c : 50");
+		error_exit(main, "MLX has failed us once more : inits.c : 66");
 }
 
 void	main_init(t_main **main)
 {
+	(*main)->var->player_x = WIN_L / 2 - 32;
+	(*main)->var->player_y = WIN_H / 2 - 32;
 	window_init(main);
 	xpm_inits(main);
-	(*main)->var->player_x = 0;
-	(*main)->var->player_y = 0;
+	map_img_init(main);
+	player_img_init(main);
+	(*main)->var->map_x = (*main)->var->player_x - \
+		((*main)->map->p_pos[0] * 64);
+	(*main)->var->map_y = (*main)->var->player_y - \
+		((*main)->map->p_pos[1] * 64);
 	(*main)->var->key_w = false;
 	(*main)->var->key_a = false;
 	(*main)->var->key_s = false;
