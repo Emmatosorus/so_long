@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/07 17:22:28 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:12:39 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,28 @@
 
 int	ft_move(t_main **main)
 {
+	char	**ptr;
+	int		p_y;
+	int		p_x;
+
+	p_y = (*main)->var->player_y + 32;
+	p_x = (*main)->var->player_x + 32;
+	ptr = (*main)->map->map;
 	if ((*main)->var->key_w)
-		(*main)->var->map_y++;
+		if (ptr[((((*main)->var->map_y + 1) * -1) + p_y - 32)/64][(((*main)->var->map_x * -1) + (*main)->var->player_x - 16)/64 + 1] != '1')
+			if (ptr[((((*main)->var->map_y + 1) * -1) + p_y - 32)/64][(((*main)->var->map_x * -1) + (*main)->var->player_x - 32)/64 + 1] != '1')
+				(*main)->var->map_y++;
 	if ((*main)->var->key_a)
-		(*main)->var->map_x++;
+		if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y)/64][((((*main)->var->map_x + 1) * -1) + (*main)->var->player_x)/64] != '1')
+			if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y + 32)/64][((((*main)->var->map_x + 1) * -1) + (*main)->var->player_x)/64] != '1')
+				(*main)->var->map_x++;
 	if ((*main)->var->key_s)
-		(*main)->var->map_y--;
+		if (ptr[((((*main)->var->map_y - 1) * -1) + p_y - 32)/64 + 1][(((*main)->var->map_x * -1) + p_x - 16)/64] != '1')
+			if (ptr[((((*main)->var->map_y - 1) * -1) + p_y - 32)/64 + 1][(((*main)->var->map_x * -1) + p_x + 16)/64] != '1')
+				(*main)->var->map_y--;
 	if ((*main)->var->key_d)
-		(*main)->var->map_x--;
+		if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y)/64][((((*main)->var->map_x - 1) * -1) + (*main)->var->player_x)/64 + 1] != '1')
+			(*main)->var->map_x--;
 	return (0);
 }
 
