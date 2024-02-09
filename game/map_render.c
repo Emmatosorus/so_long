@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 14:02:45 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:21:44 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ inline void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 	((int *)data->addr)[y * (data->line_length >> 2) + x] = (int)color;
 }
 
-void	put_asset(t_main **main, int img, int x, int y)
+void	put_asset(t_main *main, int img, int x, int y)
 {
 	int				pos[2];
 	int	color;
@@ -55,17 +55,17 @@ void	put_asset(t_main **main, int img, int x, int y)
 		pos[0] = 0;
 		while (pos[0] < 64)
 		{
-			color = *(int *)((*main)->var->xpm[img]->data->addr + \
-				(pos[1] * (*main)->var->xpm[img]->data->line_length + pos[0] \
+			color = *(int *)(main->var.xpm[img]->data.addr + \
+				(pos[1] * main->var.xpm[img]->data.line_length + pos[0] \
 				* 4));
-			my_mlx_pixel_put((*main)->var->map, x + pos[0], y + pos[1], color);
+			my_mlx_pixel_put(&main->var.map, x + pos[0], y + pos[1], color);
 			pos[0]++;
 		}
 		pos[1]++;
 	}
 }
 
-void	build_map(t_main **main)
+void	build_map(t_main *main)
 {
 	int	pos[2];
 	int x;
@@ -74,13 +74,13 @@ void	build_map(t_main **main)
 
 	pos[1] = 0;
 	y = 0;
-	while (pos[1] < 64 * (*main)->map->map_size[1])
+	while (pos[1] < 64 * main->map.map_size[1])
 	{
 		pos[0] = 0;
 		x = 0;
-		while (pos[0] < 64 * (*main)->map->map_size[0])
+		while (pos[0] < 64 * main->map.map_size[0])
 		{
-			img = what_img(pos[0], pos[1], (*main)->map->map);
+			img = what_img(pos[0], pos[1], main->map.map);
 			put_asset(main, img, x, y);
 			pos[0] += 64;
 			x += 64;

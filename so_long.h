@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 11:02:31 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:09:35 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define WIN_H 1400
-# define WIN_L 1920
+# define WIN_H 1000
+# define WIN_L 1500
 
 typedef struct s_parse
 {
@@ -54,7 +54,7 @@ typedef struct s_data{
 typedef struct s_xpm
 {
 	void	*img;
-	t_data	*data;
+	t_data	data;
 	int		height;
 	int		width;
 }			t_xpm;
@@ -64,10 +64,10 @@ typedef struct s_var
 	void		*mlx;
 	void		*win;
 	t_xpm		**xpm;
-	t_data		*map;
+	t_data		map;
 	int			map_x;
 	int			map_y;
-	t_data		*player;
+	t_data		player;
 	int 		player_x;
 	int 		player_y;
 	bool		key_w;
@@ -78,48 +78,48 @@ typedef struct s_var
 
 typedef struct s_main
 {
-	t_var	*var;
-	t_parse	*map;
-	t_parse	*cpy;
+	t_var	var;
+	t_parse	map;
+	t_parse	cpy;
 }			t_main;
 
 /* Error Management */
 void	ft_free_map(t_parse *map);
 void	ft_free_s_map(t_parse *map);
-void	multiple_pos_error(t_main **main);
-void	error_exit(t_main **main, char *reason);
-void	success_exit(t_main **main);
-void	ft_free_mlx(t_main **main);
-void	ft_free_xpm(t_main **main);
-int		ft_close(t_main **main);
+void	multiple_pos_error(t_main *main);
+void	error_exit(t_main *main, char *reason);
+void	success_exit(t_main *main);
+void	ft_free_mlx(t_main *main);
+void	ft_free_xpm(t_main *main);
+int		ft_close(t_main *main);
 
 /* Parsing */
-void	map_parse(char *filename, t_main **main);
-void	verify_map(t_main **main);
-void	solve_map(t_main **main);
-void	allocate_map(t_main **main);
-void	copy_s_map_to_map(t_main **main);
+void	map_parse(char *filename, t_main *main);
+void	verify_map(t_main *main);
+void	solve_map(t_main *main);
+void	allocate_map(t_main *main);
+void	copy_s_map_to_map(t_main *main);
 
 /* Initializations */
-void	map_img_init(t_main **main);
-void	player_img_init(t_main **main);
+void	map_img_init(t_main *main);
+void	player_img_init(t_main *main);
 
 /* Game */
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
-void	build_map(t_main **main);
-void	build_player(t_main **main);
-void	put_coins(t_main **main);
-void	main_init(t_main **main);
-void	game(t_main **main);
-int		ft_move(t_main **main);
-void	move_coins(t_main **main, char c);
+void	build_map(t_main *main);
+void	build_player(t_main *main);
+void	put_coins(t_main *main);
+void	main_init(t_main *main);
+void	game(t_main *main);
+int		ft_move(t_main *main);
+void	move_coins(t_main *main, char c);
 
 /* User Input */
-void	move_w(t_main **main, int p_y, int p_x);
-void	move_a(t_main **main, int p_y, int p_x);
-void	move_s(t_main **main, int p_y, int p_x);
-void	move_d(t_main **main, int p_y, int p_x);
-int		ft_key_press(int keycode, t_main **main);
-int		ft_key_release(int keycode, t_main **main);
+void	move_w(t_main *main, int p_y, int p_x);
+void	move_a(t_main *main, int p_y, int p_x);
+void	move_s(t_main *main, int p_y, int p_x);
+void	move_d(t_main *main, int p_y, int p_x);
+int		ft_key_press(int keycode, t_main *main);
+int		ft_key_release(int keycode, t_main *main);
 
 #endif

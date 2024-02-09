@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:41:48 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 14:35:11 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:05:47 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,17 @@ void	check_file(char *filename)
 		error_exit(NULL, "File cannot be in other directory than /levels/");
 }
 
-void	initialize_main_struct(t_main **main)
+void	initialize_main_struct(t_main *main)
 {
-	*main = (t_main *)malloc(sizeof(t_main));
-	if (!*main)
-		error_exit(main, "Malloc has failed : main.c : line 17");
-	(*main)->map = (t_parse *)malloc(sizeof(t_parse));
-	if (!(*main)->map)
-		error_exit(main, "Malloc has failed : main.c : line 20");
-	(*main)->var = (t_var *)malloc(sizeof(t_var));
-	if (!(*main)->var)
-		error_exit(main, "Malloc has failed : main.c : line 23");
-	(*main)->var->mlx = NULL;
-	(*main)->var->win = NULL;
-	(*main)->var->xpm = NULL;
-	(*main)->var->map = NULL;
-	(*main)->var->player = NULL;
+	main->var.mlx = NULL;
+	main->var.win = NULL;
+	main->var.xpm = NULL;
 }
 
 int	main(int ac, char **av)
 {
-	t_main	*main;
+	t_main	main;
 
-	main = NULL;
 	if (ac != 2)
 		exit(EXIT_FAILURE);
 	check_file(av[1]);
