@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:49:30 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:44:59 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	ft_move(t_main *main)
 {
-	char	**ptr;
 	int		p_y;
 	int		p_x;
 
 	p_y = main->var.player_y;
 	p_x = main->var.player_x;
-	ptr = main->map.map;
 	if (main->var.key_w)
 		move_w(main, p_y, p_x);
 	if (main->var.key_a)

@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 20:13:58 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:17:05 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_var
 	t_data		map;
 	int			map_x;
 	int			map_y;
+	int			moves;
 	t_data		player;
 	int 		player_x;
 	int 		player_y;

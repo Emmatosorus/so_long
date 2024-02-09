@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 20:16:52 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:54:19 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	make_xpm(t_main *main, char *path, int pos)
 	main->var.xpm[pos]->data.bits_per_pixel = 0;
 	main->var.xpm[pos]->data.line_length = 0;
 	main->var.xpm[pos]->data.endian = 0;
-	main->var.xpm[pos]->data.addr = mlx_get_data_addr( \
+	main->var.xpm[pos]->data.addr = mlx_get_data_addr(\
 		main->var.xpm[pos]->img, \
 		&main->var.xpm[pos]->data.bits_per_pixel, \
 		&main->var.xpm[pos]->data.line_length, \
@@ -118,6 +118,7 @@ void	main_init(t_main *main)
 	main->var.key_a = false;
 	main->var.key_s = false;
 	main->var.key_d = false;
+	main->var.moves = 0;
 	main->map.a_coins = 0;
 	coin_init(main);
 }
