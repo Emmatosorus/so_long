@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:21:44 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:16:23 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ inline void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 
 void	put_asset(t_main *main, int img, int x, int y)
 {
-	int				pos[2];
+	int	pos[2];
 	int	color;
 
 	pos[1] = 0;

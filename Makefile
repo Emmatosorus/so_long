@@ -16,12 +16,15 @@ XINCLUDE = -I libs/minilibx/
 
 XFLAG = -lXext -lX11 -lm
 
+OBJ_DIR = .obj/
+
 #--------Sources--------#
 
 SRC = \
 	main.c \
 	exit/parse_exit_manager.c \
 	exit/game_exit_manager.c \
+	exit/end_exit_manager.c \
 	parsing/main_parse.c \
 	parsing/map_check.c \
 	parsing/solve_map.c \
@@ -35,16 +38,19 @@ SRC = \
 	game/coin_move.c \
 	game/player_render.c
 
-OBJ = $(SRC:%.c=%.o)
+OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 #---------Rules---------#
 
-all : $(NAME)
+all :
+	$(MAKE) mlx
+	$(MAKE) $(NAME)
 
-%.o: %.c $(HDR) $(LIB_AR)
-	$(CC) $(CFLAGS) $(XINCLUDE) -c $< -o $(<:.c=.o)
+$(OBJ_DIR)%.o: %.c $(HDR) $(LIB_AR)
+	mkdir -p $(OBJ_DIR)exit/ $(OBJ_DIR)parsing/ $(OBJ_DIR)game/
+	$(CC) $(CFLAGS) $(XINCLUDE) -c $< -o $@
 
-$(NAME) : mlx $(OBJ)
+$(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(XINCLUDE) -Llibs/minilibx/ -lmlx $(XFLAG) $(FTLINKER)
 
 mlx:
@@ -56,11 +62,10 @@ $(LIB_AR): force
 clean:
 	$(MAKE) -C libs/libft clean
 	$(MAKE) -C libs/minilibx clean
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
-fclean:
-	$(MAKE) -C libs/libft fclean
-	rm -f $(OBJ) $(NAME)
+fclean: clean
+	rm $(NAME)
 
 re: fclean all
 

@@ -6,20 +6,44 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:18:31 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:54:31 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include <stdio.h>
+
+int	ft_time(t_main *main)
+{
+	static int	loops = 0;
+	double	func;
+
+	loops++;
+	func = (((-26 / 33) * main->map.a_coins) + 411);
+	printf("func : %f\n", func);
+	if (loops > func)
+		loops= 0;
+	if (loops < func * 0.25)
+		return (11);
+	else if (loops < func * 0.5)
+		return (12);
+	else if (loops < func * 0.75)
+		return (13);
+	return (14);
+	main->map.a_coins = 0;
+}
+
 
 int ft_ref(t_main *main)
 {
+	int	img;
+	
+	img = ft_time(main);
 	ft_move(main);
 	mlx_put_image_to_window(main->var.mlx, main->var.win, \
 		main->var.map.img, main->var.map_x, main->var.map_y);
-	put_coins(main);
+	put_coins(main, img);
 	build_player(main);
-	//ft_printf("coins left : %d\n",main->map.coins_left);
 	return (0);
 }
 

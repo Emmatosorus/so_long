@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:44:33 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:16:52 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ void	main_init(t_main *main)
 	main->var.key_a = false;
 	main->var.key_s = false;
 	main->var.key_d = false;
+	main->map.a_coins = 0;
 	coin_init(main);
 }

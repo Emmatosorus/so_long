@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:04:32 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:09:11 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:04:57 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,16 @@ static int		is_wall(t_main *main, char c, int x, int y)
 	walls = "UDLR1\0";
 	i = -1;
 	if (c == 'C')
-	{
 		while (++i < main->map.coins)
-		{
 			if(((main->map.c_pos[i][0] - main->var.map_x)/64) == x \
 				&& ((main->map.c_pos[i][1] - main->var.map_y )/64) == y)
-			{
-				main->map.c_pos[i][0] = 0;
-				main->map.c_pos[i][1] = 0;
-				main->map.coins_left--;
-				main->map.map[y][x] = '0';
-			}
-		}
-	}
+				forget_coin(main, i, x, y);
+	if (c == 'E' && main->map.coins_left == 0)
+		end_game(main);
 	i = -1;
 	while (walls[++i] != '\0')
 		if (c == walls[i])
 			return (-1);
-	
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:33:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:22:03 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:15:27 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 static int	what_player(void)
 {
 	return (0);
-}
-
-static int	what_coin(void)
-{
-	return (11);
 }
 
 void	build_player(t_main *main)
@@ -56,15 +51,13 @@ static int	is_in_window(int x, int y)
 	return (0);
 }
 
-void	put_coins(t_main *main)
+void	put_coins(t_main *main, int img)
 {
 	int	i;
-	int	img;
 	int	x;
 	int	y;
 
 	i = 0;
-	img = what_coin();
 	while (i < main->map.coins)
 	{
 		x = main->map.c_pos[i][0];
@@ -74,7 +67,8 @@ void	put_coins(t_main *main)
 		{
 			
 			mlx_put_image_to_window(main->var.mlx, main->var.win, \
-				main->var.xpm[11]->img, x, y);
+				main->var.xpm[img]->img, x, y);
+			main->map.a_coins++;
 		}
 		i++;
 	}
