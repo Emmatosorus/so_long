@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 18:42:54 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 09:50:05 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	error_exit(t_main **main, char *reason)
 				free((*main)->map->file_path);
 			if ((*main)->map->map != NULL)
 				ft_free_map((*main)->map);
+			if ((*main)->map->c_pos)
+				free((*main)->map->c_pos);
 			free((*main)->map);
 		}
 		free((*main));

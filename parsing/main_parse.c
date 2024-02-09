@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:39:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 17:44:58 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:00:34 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static void	map_init(t_main **main)
 {
 	(*main)->map->s_map = NULL;
 	(*main)->map->map = NULL;
+	(*main)->map->c_pos = NULL;
 	(*main)->map->file_path = "levels/";
 	(*main)->map->player = 0;
 	(*main)->map->coins = 0;
@@ -107,4 +108,5 @@ void	map_parse(char *filename, t_main **main)
 	(*main)->map->map_size[1] = WIN_H / 64 + (*main)->map->s_map_size[1];
 	allocate_map(main);
 	copy_s_map_to_map(main);
+	(*main)->map->coins_left = (*main)->map->coins;
 }

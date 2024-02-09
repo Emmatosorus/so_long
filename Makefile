@@ -32,6 +32,7 @@ SRC = \
 	game/asset_inits.c \
 	game/map_render.c \
 	game/move.c \
+	game/coin_move.c \
 	game/player_render.c
 
 OBJ = $(SRC:%.c=%.o)

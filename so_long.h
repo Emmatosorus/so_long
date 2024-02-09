@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 18:33:04 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:02:31 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_parse
 	int			player;
 	int			p_pos[2];
 	int			coins;
+	int			coins_left;
+	int			(*c_pos)[3];
 	int			exit;
 	int			foe;
 }				t_parse;
@@ -106,10 +108,11 @@ void	player_img_init(t_main **main);
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
 void	build_map(t_main **main);
 void	build_player(t_main **main);
+void	put_coins(t_main **main);
 void	main_init(t_main **main);
 void	game(t_main **main);
-void	window_init(t_main **main);
 int		ft_move(t_main **main);
+void	move_coins(t_main **main, char c);
 
 /* User Input */
 void	move_w(t_main **main, int p_y, int p_x);

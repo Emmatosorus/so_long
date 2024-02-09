@@ -6,13 +6,41 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 18:43:20 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:55:52 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	make_xpm(t_main **main, char *path, int pos)
+static void	coin_init(t_main **main)
+{
+	int	p[2];
+	int	i;
+
+	p[1] = 0;
+	i = 0;
+	(*main)->map->c_pos = malloc(sizeof(int [(*main)->map->coins][3]));
+	if (!(*main)->map->c_pos)
+		error_exit(main, "Malloc has failed : inits.c : 19");
+	while (p[1] < (*main)->map->map_size[1])
+	{
+		p[0] = 0;
+		while (p[0] < ((*main)->map->map_size[0]))
+		{
+			if ((*main)->map->map[p[1]][p[0]] == 'C')
+			{
+				(*main)->map->c_pos[i][0] = (*main)->var->map_x + (p[0] * 64);
+				(*main)->map->c_pos[i][1] = (*main)->var->map_y + (p[1] * 64);
+				(*main)->map->c_pos[i][2] = i;
+				i++;
+			}
+			p[0]++;
+		}
+		p[1]++;
+	}
+}
+
+static void	make_xpm(t_main **main, char *path, int pos)
 {
 	(*main)->var->xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!(*main)->var->xpm[pos])
@@ -38,7 +66,7 @@ void	make_xpm(t_main **main, char *path, int pos)
 		error_exit(main, "MLX has failed us once more : inits.c : 32");
 }
 
-void	xpm_inits(t_main **main)
+static void	xpm_inits(t_main **main)
 {
 	(*main)->var->xpm = (t_xpm **)malloc(20 * sizeof(t_xpm *));
 	if (!(*main)->var->xpm)
@@ -65,7 +93,7 @@ void	xpm_inits(t_main **main)
 	make_xpm(main, "./sprites/world/forest_left.xpm", 19);
 }
 
-void	window_init(t_main	**main)
+static void	window_init(t_main	**main)
 {
 	(*main)->var->mlx = mlx_init();
 	if (!(*main)->var->mlx)
@@ -93,4 +121,5 @@ void	main_init(t_main **main)
 	(*main)->var->key_a = false;
 	(*main)->var->key_s = false;
 	(*main)->var->key_d = false;
+	coin_init(main);
 }

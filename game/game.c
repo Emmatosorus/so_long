@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 14:31:40 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:33:52 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int ft_ref(t_main **main)
 	ft_move(main);
 	mlx_put_image_to_window((*main)->var->mlx, (*main)->var->win, \
 		(*main)->var->map->img, (*main)->var->map_x, (*main)->var->map_y);
+	put_coins(main);
 	build_player(main);
+	//ft_printf("coins left : %d\n",(*main)->map->coins_left);
 	return (0);
 }
 
