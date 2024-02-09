@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/07 19:05:15 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:33:04 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@
 typedef struct s_parse
 {
 	char		**map;
+	char		**s_map;
 	char		*file_path;
+	int			s_map_size[2];
 	int			map_size[2];
 	int			player;
 	int			p_pos[2];
@@ -76,10 +78,12 @@ typedef struct s_main
 {
 	t_var	*var;
 	t_parse	*map;
+	t_parse	*cpy;
 }			t_main;
 
 /* Error Management */
 void	ft_free_map(t_parse *map);
+void	ft_free_s_map(t_parse *map);
 void	multiple_pos_error(t_main **main);
 void	error_exit(t_main **main, char *reason);
 void	success_exit(t_main **main);
@@ -91,6 +95,8 @@ int		ft_close(t_main **main);
 void	map_parse(char *filename, t_main **main);
 void	verify_map(t_main **main);
 void	solve_map(t_main **main);
+void	allocate_map(t_main **main);
+void	copy_s_map_to_map(t_main **main);
 
 /* Initializations */
 void	map_img_init(t_main **main);
@@ -106,6 +112,10 @@ void	window_init(t_main **main);
 int		ft_move(t_main **main);
 
 /* User Input */
+void	move_w(t_main **main, int p_y, int p_x);
+void	move_a(t_main **main, int p_y, int p_x);
+void	move_s(t_main **main, int p_y, int p_x);
+void	move_d(t_main **main, int p_y, int p_x);
 int		ft_key_press(int keycode, t_main **main);
 int		ft_key_release(int keycode, t_main **main);
 

@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:41:48 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 10:28:35 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:35:11 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	check_file(char *filename)
 
 void	initialize_main_struct(t_main **main)
 {
-	*main = NULL;
 	*main = (t_main *)malloc(sizeof(t_main));
 	if (!*main)
 		error_exit(main, "Malloc has failed : main.c : line 17");
@@ -41,6 +40,11 @@ void	initialize_main_struct(t_main **main)
 	(*main)->var = (t_var *)malloc(sizeof(t_var));
 	if (!(*main)->var)
 		error_exit(main, "Malloc has failed : main.c : line 23");
+	(*main)->var->mlx = NULL;
+	(*main)->var->win = NULL;
+	(*main)->var->xpm = NULL;
+	(*main)->var->map = NULL;
+	(*main)->var->player = NULL;
 }
 
 int	main(int ac, char **av)

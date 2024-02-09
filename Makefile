@@ -25,11 +25,13 @@ SRC = \
 	parsing/main_parse.c \
 	parsing/map_check.c \
 	parsing/solve_map.c \
+	parsing/create_map.c \
 	game/game.c \
 	game/hooks.c \
 	game/inits.c \
 	game/asset_inits.c \
 	game/map_render.c \
+	game/move.c \
 	game/player_render.c
 
 OBJ = $(SRC:%.c=%.o)

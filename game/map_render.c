@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_render.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/07 18:59:45 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:33:59 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int	what_img(int x, int y, char **map)
 		return (10);
 	else if (c == 'C')
 		return (11);
+	else if (c == 'B')
+		return (15);
+	else if (c == 'U')
+		return (16);
+	else if (c == 'D')
+		return (17);
+	else if (c == 'R')
+		return (18);
+	else if (c == 'L')
+		return (19);
 	else
 		return (11); // return foe
 }

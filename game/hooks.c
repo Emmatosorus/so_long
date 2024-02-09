@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/08 12:12:39 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:23:34 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,17 @@ int	ft_move(t_main **main)
 	int		p_y;
 	int		p_x;
 
-	p_y = (*main)->var->player_y + 32;
-	p_x = (*main)->var->player_x + 32;
+	p_y = (*main)->var->player_y;
+	p_x = (*main)->var->player_x;
 	ptr = (*main)->map->map;
 	if ((*main)->var->key_w)
-		if (ptr[((((*main)->var->map_y + 1) * -1) + p_y - 32)/64][(((*main)->var->map_x * -1) + (*main)->var->player_x - 16)/64 + 1] != '1')
-			if (ptr[((((*main)->var->map_y + 1) * -1) + p_y - 32)/64][(((*main)->var->map_x * -1) + (*main)->var->player_x - 32)/64 + 1] != '1')
-				(*main)->var->map_y++;
+		move_w(main, p_y, p_x);
 	if ((*main)->var->key_a)
-		if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y)/64][((((*main)->var->map_x + 1) * -1) + (*main)->var->player_x)/64] != '1')
-			if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y + 32)/64][((((*main)->var->map_x + 1) * -1) + (*main)->var->player_x)/64] != '1')
-				(*main)->var->map_x++;
+		move_a(main, p_y, p_x);
 	if ((*main)->var->key_s)
-		if (ptr[((((*main)->var->map_y - 1) * -1) + p_y - 32)/64 + 1][(((*main)->var->map_x * -1) + p_x - 16)/64] != '1')
-			if (ptr[((((*main)->var->map_y - 1) * -1) + p_y - 32)/64 + 1][(((*main)->var->map_x * -1) + p_x + 16)/64] != '1')
-				(*main)->var->map_y--;
+		move_s(main, p_y, p_x);
 	if ((*main)->var->key_d)
-		if (ptr[(((*main)->var->map_y * -1) + (*main)->var->player_y)/64][((((*main)->var->map_x - 1) * -1) + (*main)->var->player_x)/64 + 1] != '1')
-			(*main)->var->map_x--;
+		move_d(main, p_y, p_x);
 	return (0);
 }
 

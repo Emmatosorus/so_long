@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_manager.c                                    :+:      :+:    :+:   */
+/*   parse_exit_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: epolitze <epolitze@42student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/07 13:56:14 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:42:54 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,38 @@ void	ft_free_map(t_parse *map)
 	int		i;
 
 	i = 0;
-	while (map->map_size[1] > i)
+	if (map->map)
 	{
-		free(map->map[i]);
-		map->map[i] = NULL;
-		i++;
+		while (map->map_size[1] > i)
+		{
+			free(map->map[i]);
+			map->map[i] = NULL;
+			i++;
+		}
+		free(map->map);
 	}
-	free(map->map);
-	map->map = NULL;
 }
 
 void	error_exit(t_main **main, char *reason)
 {
 	if (main)
 	{
-		ft_free_xpm(main);
-		ft_free_mlx(main);
+		if ((*main)->var)
+		{
+			ft_free_xpm(main);
+			ft_free_mlx(main);
+		}
 		if ((*main)->map)
 		{
 			if ((*main)->map->file_path != NULL)
 				free((*main)->map->file_path);
 			if ((*main)->map->map != NULL)
 				ft_free_map((*main)->map);
+			free((*main)->map);
 		}
+		free((*main));
 	}
-	ft_printf("\x1b[31;1m%s\n\x1b[0m", reason);
+	ft_printf("\x1b[31;1mError\n%s\n\x1b[0m", reason);
 	exit(EXIT_FAILURE);
 }
 
