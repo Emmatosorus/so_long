@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:04:32 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 22:43:31 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:06:12 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_wall(t_main *main, char c, int x, int y)
 	char	*walls;
 	int		i;
 
-	walls = "UDLR1\0";
+	walls = "UDLR1F\0";
 	i = -1;
 	if (c == 'C')
 		while (++i < main->map.coins)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_render.c                                    :+:      :+:    :+:   */
+/*   live_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:33:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 20:15:27 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 13:10:12 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,8 @@ void	put_coins(t_main *main, int img)
 		y = main->map.c_pos[i][1];
 		if (((x != 0 || y != 0) || (x != 0 && y != 0)) \
 			&& (is_in_window(x, y) == 1))
-		{
-			
-			mlx_put_image_to_window(main->var.mlx, main->var.win, \
+			mlx_put_image_to_window(main->var.mlx, main->var.win,\
 				main->var.xpm[img]->img, x, y);
-			main->map.a_coins++;
-		}
 		i++;
 	}
 }

@@ -36,7 +36,7 @@ SRC = \
 	game/map_render.c \
 	game/move.c \
 	game/coin_move.c \
-	game/player_render.c
+	game/live_render.c
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 

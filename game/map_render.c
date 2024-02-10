@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:35:19 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 20:16:23 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:04:57 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	what_img(int x, int y, char **map)
 	else if (c == 'L')
 		return (19);
 	else
-		return (11); // return foe
+		return (20);
 }
 
 inline void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)

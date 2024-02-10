@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 22:17:05 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:47:27 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <sys/time.h>
 # include "libs/minilibx/mlx.h"
 # include "libs/libft/libft.h"
 
@@ -24,8 +25,9 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define WIN_H 1000
-# define WIN_L 1500
+# define WIN_H 1800
+# define WIN_L 2600
+
 
 typedef struct s_parse
 {
@@ -37,7 +39,6 @@ typedef struct s_parse
 	int			player;
 	int			p_pos[2];
 	int			coins;
-	int			a_coins;
 	int			coins_left;
 	int			(*c_pos)[3];
 	int			exit;
@@ -62,21 +63,22 @@ typedef struct s_xpm
 
 typedef struct s_var
 {
-	void		*mlx;
-	void		*win;
-	t_xpm		**xpm;
-	t_data		map;
-	int			map_x;
-	int			map_y;
-	int			moves;
-	t_data		player;
-	int 		player_x;
-	int 		player_y;
-	bool		key_w;
-	bool		key_a;
-	bool		key_s;
-	bool		key_d;
-}				t_var;
+	void			*mlx;
+	void			*win;
+	t_xpm			**xpm;
+	t_data			map;
+	int				map_x;
+	int				map_y;
+	int				moves;
+	t_data			player;
+	int 			player_x;
+	int 			player_y;
+	struct timeval	last_time;
+	bool			key_w;
+	bool			key_a;
+	bool			key_s;
+	bool			key_d;
+}					t_var;
 
 typedef struct s_main
 {
@@ -108,6 +110,8 @@ void	player_img_init(t_main *main);
 
 /* Game */
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
+void	make_banners(t_main *main);
+void	make_xpm(t_main *main, char *path, int pos);
 void	build_map(t_main *main);
 void	build_player(t_main *main);
 void	put_coins(t_main *main, int img);

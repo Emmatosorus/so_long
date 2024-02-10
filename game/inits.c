@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 22:54:19 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:10:16 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	coin_init(t_main *main)
 	}
 }
 
-static void	make_xpm(t_main *main, char *path, int pos)
+void	make_xpm(t_main *main, char *path, int pos)
 {
 	main->var.xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!main->var.xpm[pos])
@@ -65,7 +65,7 @@ static void	make_xpm(t_main *main, char *path, int pos)
 
 static void	xpm_inits(t_main *main)
 {
-	main->var.xpm = (t_xpm **)malloc(20 * sizeof(t_xpm *));
+	main->var.xpm = (t_xpm **)malloc(22 * sizeof(t_xpm *));
 	if (!main->var.xpm)
 		error_exit(main, "Malloc has failed : inits.c : 43");
 	make_xpm(main, "./sprites/actor/actor_down.xpm", 0);
@@ -88,6 +88,8 @@ static void	xpm_inits(t_main *main)
 	make_xpm(main, "./sprites/world/forest_down.xpm", 17);
 	make_xpm(main, "./sprites/world/forest_right.xpm", 18);
 	make_xpm(main, "./sprites/world/forest_left.xpm", 19);
+	make_xpm(main, "./sprites/world/foe.xpm", 20);
+	make_banners(main);
 }
 
 static void	window_init(t_main *main)
@@ -119,6 +121,6 @@ void	main_init(t_main *main)
 	main->var.key_s = false;
 	main->var.key_d = false;
 	main->var.moves = 0;
-	main->map.a_coins = 0;
+	gettimeofday(&main->var.last_time, NULL);
 	coin_init(main);
 }

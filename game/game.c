@@ -6,31 +6,34 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 22:55:54 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:49:57 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <stdio.h>
 
 int	ft_time(t_main *main)
 {
-	static int	loops = 0;
-	double		func;
+	static int		state = 11;
+	struct timeval	time;
+	int				delta;
 
-	loops++;
-	func = (((-26 / 33) * main->map.a_coins) + 411);
-	//printf("func : %f\n", func);
-	if (loops > func)
-		loops = 0;
-	if (loops < func * 0.25)
-		return (11);
-	else if (loops < func * 0.5)
-		return (12);
-	else if (loops < func * 0.75)
-		return (13);
-	return (14);
-	main->map.a_coins = 0;
+	gettimeofday(&time, NULL);
+	delta = (time.tv_usec - main->var.last_time.tv_usec) +\
+		(time.tv_sec - main->var.last_time.tv_sec) * 1000000;
+	if (delta >= 175000)
+	{
+		main->var.last_time = time;
+		if (state == 11)
+			state = 12;
+		else if (state == 12)
+			state = 13;
+		else if (state == 13)
+			state = 14;
+		else
+			state = 11;
+	}
+	return (state);
 }
 
 
@@ -39,16 +42,18 @@ int	ft_ref(t_main *main)
 	int		img;
 	char	*nb;
 
-	img = ft_time(main);
 	ft_move(main);
 	mlx_put_image_to_window(main->var.mlx, main->var.win, \
 		main->var.map.img, main->var.map_x, main->var.map_y);
+	img = ft_time(main);
 	put_coins(main, img);
 	build_player(main);
-	mlx_string_put(main->var.mlx, main->var.win, 5, 13, 0xffffff, \
+	mlx_put_image_to_window(main->var.mlx, main->var.win, \
+		main->var.xpm[21]->img, 0, 0);
+	mlx_string_put(main->var.mlx, main->var.win, 5, 18, 0xffffff, \
 		"Move : ");
 	nb = ft_itoa(main->var.moves / 64);
-	mlx_string_put(main->var.mlx, main->var.win, 45, 15, 0xffffff, nb);
+	mlx_string_put(main->var.mlx, main->var.win, 45, 19, 0xffffff, nb);
 	free(nb);
 	return (0);
 }
