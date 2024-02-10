@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 09:07:32 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:48:42 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_free_xpm(t_main *main)
 	i = -1;
 	if (main->var.xpm)
 	{
-		while (++i < 20)
+		while (++i < 24)
 		{
 			if (main->var.xpm[i])
 			{
@@ -34,11 +34,14 @@ void	ft_free_xpm(t_main *main)
 
 void	ft_free_mlx(t_main *main)
 {
-	if (main->var.mlx && main->var.win)
+	if (main->var.mlx)
 	{
-		mlx_destroy_image(main->var.mlx, main->var.map.img);
-		mlx_destroy_image(main->var.mlx, main->var.player.img);
-		mlx_destroy_window(main->var.mlx, main->var.win);
+		if (main->var.map.img)
+			mlx_destroy_image(main->var.mlx, main->var.map.img);
+		if (main->var.player.img)
+			mlx_destroy_image(main->var.mlx, main->var.player.img);
+		if (main->var.win)
+			mlx_destroy_window(main->var.mlx, main->var.win);
 		mlx_destroy_display(main->var.mlx);
 		free(main->var.mlx);
 	}
@@ -71,7 +74,7 @@ int	ft_close(t_main *main)
 		free(main->map.file_path);
 	if (main->map.c_pos)
 		free(main->map.c_pos);
-	if (main->map.coins_left > 0)
+	if (main->map.coins_left > 0 && main->var.hp > 1)
 		ft_printf("\x1b[36;1mGoodby! See you next time! ^^\n\x1b[0m");
 	exit(EXIT_SUCCESS);
 	return (0);

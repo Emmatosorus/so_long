@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:56:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 14:34:16 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:58:09 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ void	player_img_init(t_main *main)
 
 void	make_banners(t_main *main)
 {
-	make_xpm(main, "./sprites/banners/move_background.xpm", 21);
+	make_xpm(main, "./sprites/assets/move_background.xpm", 21);
+	make_xpm(main, "./sprites/assets/heart.xpm", 22);
+	make_xpm(main, "./sprites/assets/heart_background.xpm", 23);
 }

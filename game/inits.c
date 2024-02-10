@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 14:10:16 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:58:45 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	make_xpm(t_main *main, char *path, int pos)
 
 static void	xpm_inits(t_main *main)
 {
-	main->var.xpm = (t_xpm **)malloc(22 * sizeof(t_xpm *));
+	main->var.xpm = (t_xpm **)malloc(24 * sizeof(t_xpm *));
 	if (!main->var.xpm)
 		error_exit(main, "Malloc has failed : inits.c : 43");
 	make_xpm(main, "./sprites/actor/actor_down.xpm", 0);
@@ -96,12 +96,11 @@ static void	window_init(t_main *main)
 {
 	main->var.mlx = mlx_init();
 	if (!main->var.mlx)
-		error_exit(main, "MLX has failed us once more : inits.c : 65");
-	main->var.win = mlx_new_window(main->var.mlx, \
-		WIN_L, \
-		WIN_H, "It's so long..");
+		error_exit(main, "MLX has failed to initialize : inits.c");
+	main->var.win = mlx_new_window(main->var.mlx, WIN_L, WIN_H, \
+		"It's so long..");
 	if (!main->var.win)
-		error_exit(main, "MLX has failed us once more : inits.c : 68");
+		error_exit(main, "MLX has failed to create window : inits.c");
 }
 
 void	main_init(t_main *main)
@@ -116,11 +115,15 @@ void	main_init(t_main *main)
 		(main->map.p_pos[0] * 64);
 	main->var.map_y = main->var.player_y - \
 		(main->map.p_pos[1] * 64);
+	main->var.cd = false;
+	main->var.key_shift = false;
 	main->var.key_w = false;
 	main->var.key_a = false;
 	main->var.key_s = false;
 	main->var.key_d = false;
 	main->var.moves = 0;
+	main->var.hp = 3;
+	main->var.p_img = 0;
 	gettimeofday(&main->var.last_time, NULL);
 	coin_init(main);
 }

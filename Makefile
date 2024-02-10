@@ -35,6 +35,7 @@ SRC = \
 	game/asset_inits.c \
 	game/map_render.c \
 	game/move.c \
+	game/move_tools.c \
 	game/coin_move.c \
 	game/live_render.c
 

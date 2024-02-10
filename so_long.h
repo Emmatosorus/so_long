@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 14:47:27 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:57:11 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@
 # include "libs/minilibx/mlx.h"
 # include "libs/libft/libft.h"
 
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define WIN_H 1800
-# define WIN_L 2600
+typedef enum
+{
+    KEY_W = 119,
+    KEY_A = 97,
+    KEY_S = 115,
+    KEY_D = 100,
+    KEY_ESC = 65307,
+    A_UP = 65362,
+    A_LEFT = 65361,
+    A_DOWN = 65364,
+    A_RIGHT = 65363,
+    KEY_SHIFT = 65505,
+	WIN_H  = 1800,
+	WIN_L = 2600
+	
+}	KeyCode;
 
 
 typedef struct s_parse
@@ -70,10 +80,15 @@ typedef struct s_var
 	int				map_x;
 	int				map_y;
 	int				moves;
+	int				speed;
+	int				hp;
 	t_data			player;
 	int 			player_x;
+	int 			p_img;
 	int 			player_y;
 	struct timeval	last_time;
+	bool			cd;
+	bool			key_shift;
 	bool			key_w;
 	bool			key_a;
 	bool			key_s;
@@ -91,8 +106,8 @@ typedef struct s_main
 void	ft_free_map(t_parse *map);
 void	ft_free_s_map(t_parse *map);
 void	multiple_pos_error(t_main *main);
+void	file_error_exit(char *reason);
 void	error_exit(t_main *main, char *reason);
-void	success_exit(t_main *main);
 void	ft_free_mlx(t_main *main);
 void	ft_free_xpm(t_main *main);
 int		ft_close(t_main *main);
@@ -118,9 +133,12 @@ void	put_coins(t_main *main, int img);
 void	main_init(t_main *main);
 void	game(t_main *main);
 int		ft_move(t_main *main);
+int		wall_collide(t_main *main, char c, int x, int y);
+int		enemy_collide(t_main *main);
 void	move_coins(t_main *main, char c);
 void	forget_coin(t_main *main, int i, int x, int y);
 void	end_game(t_main *main);
+void	death_end(t_main *main);
 
 /* User Input */
 void	move_w(t_main *main, int p_y, int p_x);

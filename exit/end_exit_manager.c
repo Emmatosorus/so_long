@@ -6,11 +6,17 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:54:51 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 08:59:43 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:50:31 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	death_end(t_main *main)
+{
+	ft_printf("\x1b[31;1mOuch!\nBrambles hurt..\n\x1b[0m");
+	ft_close(main);
+}
 
 void	end_game(t_main *main)
 {

@@ -6,13 +6,13 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 14:49:57 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:43:19 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_time(t_main *main)
+static int	ft_time(t_main *main)
 {
 	static int		state = 11;
 	struct timeval	time;
@@ -36,6 +36,20 @@ int	ft_time(t_main *main)
 	return (state);
 }
 
+static void	put_hearts(t_main *main)
+{
+	mlx_put_image_to_window(main->var.mlx, main->var.win, \
+		main->var.xpm[23]->img, WIN_L - 60, 0);
+	if (main->var.hp > 2)
+		mlx_put_image_to_window(main->var.mlx, main->var.win, \
+			main->var.xpm[22]->img, WIN_L - 18, 4);
+	if (main->var.hp > 1)
+		mlx_put_image_to_window(main->var.mlx, main->var.win, \
+			main->var.xpm[22]->img, WIN_L - 37, 4);
+	if (main->var.hp > 0)
+		mlx_put_image_to_window(main->var.mlx, main->var.win, \
+			main->var.xpm[22]->img, WIN_L - 55, 4);
+}
 
 int	ft_ref(t_main *main)
 {
@@ -43,11 +57,13 @@ int	ft_ref(t_main *main)
 	char	*nb;
 
 	ft_move(main);
+	enemy_collide(main);
 	mlx_put_image_to_window(main->var.mlx, main->var.win, \
 		main->var.map.img, main->var.map_x, main->var.map_y);
 	img = ft_time(main);
 	put_coins(main, img);
 	build_player(main);
+	put_hearts(main);
 	mlx_put_image_to_window(main->var.mlx, main->var.win, \
 		main->var.xpm[21]->img, 0, 0);
 	mlx_string_put(main->var.mlx, main->var.win, 5, 18, 0xffffff, \

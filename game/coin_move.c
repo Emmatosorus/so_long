@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:26:15 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:53:19 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:29:51 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ void	move_coins(t_main *main, char c)
 	if (c == 'w')
 		while(++i < main->map.coins)
 			if (main->map.c_pos[i][1] != 0 || main->map.c_pos[i][0] != 0)
-				main->map.c_pos[i][1]++;
+				main->map.c_pos[i][1] += main->var.speed;
 	if (c == 'a')
 		while(++i < main->map.coins)
 			if (main->map.c_pos[i][0] != 0 || main->map.c_pos[i][1] != 0)
-				main->map.c_pos[i][0]++;
+				main->map.c_pos[i][0] += main->var.speed;
 	if (c == 's')
 		while(++i < main->map.coins)
 			if (main->map.c_pos[i][1] != 0 || main->map.c_pos[i][0] != 0)
-				main->map.c_pos[i][1]--;
+				main->map.c_pos[i][1] -= main->var.speed;
 	if (c == 'd')
 		while(++i < main->map.coins)
 			if (main->map.c_pos[i][0] != 0 || main->map.c_pos[i][1] != 0)
-			main->map.c_pos[i][0]--;
+				main->map.c_pos[i][0] -= main->var.speed;
 }

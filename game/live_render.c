@@ -6,33 +6,42 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:33:06 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 13:10:12 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:26:36 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	what_player(void)
+static void	what_player(t_main *main)
 {
-	return (0);
+	int	state;
+	
+	state = (main->var.moves/64)%2;
+	if (main->var.key_w)
+		main->var.p_img = 2 + state;
+	else if (main->var.key_s)
+		main->var.p_img = 0 + state;
+	else if (main->var.key_a)
+		main->var.p_img = 6 + state;
+	else if (main->var.key_d)
+		main->var.p_img = 4 + state;
 }
 
 void	build_player(t_main *main)
 {
-	int				img;
 	int				p[2];
 	unsigned int	color;
 
 	p[1] = 0;
-	img = what_player();
+	what_player(main);
 	while (p[1] < 64)
 	{
 		p[0] = 0;
 		while (p[0] < 64)
 		{
-			color = *(unsigned int *)(main->var.xpm[img]->data.addr + \
-				(p[1] * main->var.xpm[img]->data.line_length + p[0] \
-				* 4));
+			color = *(unsigned int *)(main->var.xpm[main->var.p_img]->\
+				data.addr + (p[1] * main->var.xpm[main->var.p_img]->\
+				data.line_length + p[0] * 4));
 			if (color != 0xff000000)
 				mlx_pixel_put(main->var.mlx, main->var.win, \
 					main->var.player_x + p[0], main->var.player_y \

@@ -6,13 +6,13 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:37:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/09 17:09:11 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:16:01 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	is_wall(t_main *main, int y)
+static void	wall_collideed(t_main *main, int y)
 {
 	int		pos;
 	char	*line;
@@ -57,7 +57,7 @@ void	is_closed_n_valid(t_main *main)
 	int	pos[2];
 
 	pos[1] = 0;
-	is_wall(main, pos[1]);
+	wall_collideed(main, pos[1]);
 	while (pos[1] < main->map.s_map_size[1])
 	{
 		pos[0] = 0;
@@ -72,7 +72,7 @@ void	is_closed_n_valid(t_main *main)
 			pos[0]++;
 		}
 		if (pos[1] + 1 == main->map.s_map_size[1])
-			is_wall(main, pos[1]);
+			wall_collideed(main, pos[1]);
 		pos[1]++;
 	}
 	if (main->map.player != 1 || main->map.exit != 1
