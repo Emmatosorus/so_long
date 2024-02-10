@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:58:45 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:39:53 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	make_xpm(t_main *main, char *path, int pos)
 {
 	main->var.xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!main->var.xpm[pos])
-		error_exit(main, "Malloc has failed : inits.c : 17");
+		xpm_error_exit(pos, main, "Malloc has failed : inits.c : 17");
 	main->var.xpm[pos]->img = mlx_xpm_file_to_image(main->var.mlx, \
 		path, &main->var.xpm[pos]->width, &main->var.xpm[pos]->height);
 	if (!main->var.xpm[pos]->img)
-		error_exit(main, "MLX has failed us once more : inits.c : 23");
+		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 23");
 	main->var.xpm[pos]->height = 0;
 	main->var.xpm[pos]->width = 0;
 	main->var.xpm[pos]->data.bits_per_pixel = 0;
@@ -60,7 +60,7 @@ void	make_xpm(t_main *main, char *path, int pos)
 		&main->var.xpm[pos]->data.line_length, \
 		&main->var.xpm[pos]->data.endian);
 	if (!main->var.xpm[pos]->data.addr)
-		error_exit(main, "MLX has failed us once more : inits.c : 32");
+		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 32");
 }
 
 static void	xpm_inits(t_main *main)

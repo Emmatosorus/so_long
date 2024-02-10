@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 18:48:42 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:41:02 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_close(t_main *main)
 	if (main->map.c_pos)
 		free(main->map.c_pos);
 	if (main->map.coins_left > 0 && main->var.hp > 1)
-		ft_printf("\x1b[36;1mGoodby! See you next time! ^^\n\x1b[0m");
+		ft_printf("\x1b[36;1mGoodbye! See you next time! UwU\n\x1b[0m");
 	exit(EXIT_SUCCESS);
 	return (0);
 }

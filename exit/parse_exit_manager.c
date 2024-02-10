@@ -6,30 +6,13 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:57:53 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:14:49 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 void	ft_free_map(t_parse *map)
-{
-	int		i;
-
-	i = 0;
-	if (map->map)
-	{
-		while (map->map_size[1] > i)
-		{
-			free(map->map[i]);
-			map->map[i] = NULL;
-			i++;
-		}
-		free(map->map);
-	}
-}
-
-void	ft_free_map_copy(t_parse *map)
 {
 	int		i;
 

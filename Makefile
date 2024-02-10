@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
-CFLAGS = -Wextra -Wall -Werror -g3
+CFLAGS = -g3 #-Wextra -Wall -Werror
 
 HDR = so_long.h
 
@@ -23,6 +23,7 @@ OBJ_DIR = .obj/
 SRC = \
 	main.c \
 	exit/parse_exit_manager.c \
+	exit/mid_loop_exits.c \
 	exit/game_exit_manager.c \
 	exit/end_exit_manager.c \
 	parsing/main_parse.c \
