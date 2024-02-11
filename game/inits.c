@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 13:47:17 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:45:07 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	make_xpm(t_main *main, char *path, int pos)
 
 static void	xpm_inits(t_main *main)
 {
-	main->var.xpm = (t_xpm **)malloc(24 * sizeof(t_xpm *));
+	main->var.xpm = (t_xpm **)malloc(25 * sizeof(t_xpm *));
 	if (!main->var.xpm)
 		error_exit(main, "Malloc has failed : inits.c : 43");
 	make_xpm(main, "./sprites/actor/actor_down.xpm", 0);
@@ -124,6 +124,7 @@ void	main_init(t_main *main)
 	main->var.key_s = false;
 	main->var.key_d = false;
 	main->var.moves = 0;
+	main->var.credits = 0;
 	main->var.hp = 3;
 	main->var.p_img = 0;
 	gettimeofday(&main->var.last_time, NULL);

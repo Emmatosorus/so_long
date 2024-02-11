@@ -6,11 +6,32 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:54:51 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:50:31 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:52:22 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int		credits(t_main *main)
+{
+	struct timeval	time;
+	int				delta;
+	
+
+	gettimeofday(&time, NULL);
+	delta = (time.tv_usec - main->var.last_time.tv_usec) +\
+		(time.tv_sec - main->var.last_time.tv_sec) * 1000000;
+	if (delta >= 7500)
+	{
+		main->var.last_time = time;
+		main->var.credits--;
+	}	
+	if (main->var.credits < -2400)
+		ft_close(main);
+	mlx_put_image_to_window(main->var.mlx, main->var.win, \
+			main->var.xpm[24]->img, -50, main->var.credits);
+	return (0);
+}
 
 void	death_end(t_main *main)
 {
@@ -20,8 +41,14 @@ void	death_end(t_main *main)
 
 void	end_game(t_main *main)
 {
-	ft_printf("\x1b[32;1mCongratulations\n\x1b[0m");
-	ft_printf("\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
+	static	bool j = true;
+	
+	if (j)
+	{
+		ft_printf("\x1b[32;1mCongratulations\n\x1b[0m");
+		ft_printf("\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
 		main->var.moves / 64);
-	ft_close(main);
+		j = false;
+	}
+	mlx_loop_hook(main->var.mlx, credits, main);
 }
