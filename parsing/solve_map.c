@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:49:53 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:48:42 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	cpy_map(t_main *main)
 	{
 		cpy[i] = ft_strdup(main->map.s_map[i]);
 		if (!cpy[i])
-			error_exit(main, "ft_strdup has failed : solve_map.c");
+			cpy_error_exit(i, cpy, main, "ft_strdup has failed : solve_map.c");
 		i++;
 	}
 	main->cpy.s_map = cpy;

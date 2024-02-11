@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:56:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:58:09 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:33:24 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	player_img_init(t_main *main)
 	main->var.player.line_length = 0;
 	main->var.player.endian = 0;
 	main->var.player.img = mlx_new_image(main->var.mlx, 64, 64);
-	if (!main->var.map.img)
+	if (!main->var.player.img)
 		error_exit(main, "Couldn't create player image");
 	main->var.player.addr = mlx_get_data_addr(\
-        main->var.player.img, \
-        &main->var.player.bits_per_pixel, \
-        &main->var.player.line_length, \
-        &main->var.player.endian);
-	if (!main->var.map.addr)
+    	main->var.player.img, \
+    	&main->var.player.bits_per_pixel, \
+    	&main->var.player.line_length, \
+    	&main->var.player.endian);
+	if (!main->var.player.addr)
 		error_exit(main, "Couldn't get player image address");
 }
 

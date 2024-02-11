@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:57:27 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 19:57:20 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:57:04 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	error_free_map(t_parse *map, int y)
 {
 	if (map->map)
 	{
-		while (y >= 0)
+		while (--y >= 0)
 		{
 			free(map->map[y]);
 			map->map[y] = NULL;
-			y--;
 		}
 		free(map->map);
+		map->map = NULL;	
 	}
 }
 
@@ -41,10 +41,10 @@ void	allocate_map(t_main *main)
 		x = -1;
 		main->map.map[y] = (char *)malloc(main->map.map_size[0] \
 			* sizeof(char));
-		if (!main->map.map)
+		if (!main->map.map[y])
 		{
 			error_free_map(&main->map, y);
-			error_exit(main, "Malloc has failed : create_map.c : ..");
+			error_exit(main, "Malloc has failed : create_map.c : 42");
 		}
 		while (++x < main->map.map_size[0])
 			main->map.map[y][x] = 'B';

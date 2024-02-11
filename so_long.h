@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/10 20:17:37 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:42:49 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	multiple_pos_error(t_main *main);
 void	file_error_exit(char *reason);
 void	error_exit(t_main *main, char *reason);
 void	xpm_error_exit(int pos, t_main *main, char *reason);
+void	cpy_error_exit(int pos, char **cpy, t_main *main, char *reason);
 void	ft_free_mlx(t_main *main);
 void	ft_free_xpm(t_main *main);
 int		ft_close(t_main *main);
