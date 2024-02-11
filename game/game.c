@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:41:30 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 11:00:54 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:20:27 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ static int	ft_time(t_main *main)
 static void	put_hearts(t_main *main)
 {
 	mlx_put_image_to_window(main->var.mlx, main->var.win, \
-		main->var.xpm[23]->img, WIN_L - 60, 0);
+		main->var.xpm[23]->img, WIN_L - 357, 0);
 	if (main->var.hp > 2)
 		mlx_put_image_to_window(main->var.mlx, main->var.win, \
-			main->var.xpm[22]->img, WIN_L - 18, 4);
+			main->var.xpm[22]->img, WIN_L - 75, 8);
 	if (main->var.hp > 1)
 		mlx_put_image_to_window(main->var.mlx, main->var.win, \
-			main->var.xpm[22]->img, WIN_L - 37, 4);
+			main->var.xpm[22]->img, WIN_L - 150, 8);
 	if (main->var.hp > 0)
 		mlx_put_image_to_window(main->var.mlx, main->var.win, \
-			main->var.xpm[22]->img, WIN_L - 55, 4);
+			main->var.xpm[22]->img, WIN_L - 225, 8);
 }
 
 int	ft_ref(t_main *main)

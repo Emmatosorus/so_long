@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:56:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 10:33:24 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 12:02:46 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ void	map_img_init(t_main *main)
 	main->var.map.bits_per_pixel = 0;
 	main->var.map.line_length = 0;
 	main->var.map.endian = 0;
+	if (((main->map.map_size[1]) * 64) * \
+		((main->map.map_size[0]) * 64) > 375000000)
+		error_exit(main, "Map is too big");
 	main->var.map.img = mlx_new_image(main->var.mlx, \
         64 * (main->map.map_size[0]), 64 * (main->map.map_size[1]));
 	if (!main->var.map.img)
-		error_exit(main, "Map is probably too big");
+		error_exit(main, "Failed to create map image");
 	main->var.map.addr = mlx_get_data_addr(\
         main->var.map.img, \
         &main->var.map.bits_per_pixel, \
