@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
-CFLAGS = -g3 #-Wextra -Wall -Werror
+CFLAGS = -g3 -Wextra -Wall -Werror
 
 HDR = so_long.h
 

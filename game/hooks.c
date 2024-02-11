@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 12:07:36 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:48:07 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	ft_key_press(int keycode, t_main *main)
 		ft_close(main);
 	else if (keycode == KEY_SHIFT)
 		main->var.key_shift = true;
-	else if (keycode == KEY_W || keycode == A_UP)
+	else if (keycode == KEY_W)
 		main->var.key_w = true;
-	else if (keycode == KEY_A || keycode == A_LEFT)
+	else if (keycode == KEY_A)
 		main->var.key_a = true;
-	else if (keycode == KEY_S || keycode == A_DOWN)
+	else if (keycode == KEY_S)
 		main->var.key_s = true;
-	else if (keycode == KEY_D || keycode == A_RIGHT)
+	else if (keycode == KEY_D)
 		main->var.key_d = true;
 	return (0);
 }
@@ -54,13 +54,13 @@ int	ft_key_release(int keycode, t_main *main)
 {
 	if (keycode == KEY_SHIFT)
 		main->var.key_shift = false;
-	else if (keycode == KEY_W || keycode == A_UP)
+	else if (keycode == KEY_W)
 		main->var.key_w = false;
-	else if (keycode == KEY_A || keycode == A_LEFT)
+	else if (keycode == KEY_A)
 		main->var.key_a = false;
-	else if (keycode == KEY_S || keycode == A_DOWN)
+	else if (keycode == KEY_S)
 		main->var.key_s = false;
-	else if (keycode == KEY_D || keycode == A_RIGHT)
+	else if (keycode == KEY_D)
 		main->var.key_d = false;
 	return (0);
 }

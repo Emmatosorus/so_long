@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 12:05:09 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:47:24 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ typedef enum
     KEY_S = 115,
     KEY_D = 100,
     KEY_ESC = 65307,
-    A_UP = 65362,
-    A_LEFT = 65361,
-    A_DOWN = 65364,
-    A_RIGHT = 65363,
     KEY_SHIFT = 65505,
 	WIN_H  = 1000,
 	WIN_L = 1500
