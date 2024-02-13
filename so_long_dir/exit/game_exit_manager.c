@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 13:15:52 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:08:18 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	ft_close(t_main *main)
 	ft_free_mlx(main);
 	ft_free_s_map(&main->map);
 	ft_free_map(&main->map);
-	if (main->map.file_path != NULL)
-		free(main->map.file_path);
 	if (main->map.c_pos)
 		free(main->map.c_pos);
 	if (main->map.coins_left > 0)
@@ -84,6 +82,6 @@ void	end_game(t_main *main)
 {
 	ft_printf(1, "\x1b[32;1mCongratulations\n\x1b[0m");
 	ft_printf(1, "\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
-	main->var.moves / 64);
+	(main->var.moves / 64 + 1));
 	ft_close(main);
 }

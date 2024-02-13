@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:04:32 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 13:08:52 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:49:22 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_w(t_main *main, int p_y, int p_x)
 	int		x[2];
 
 	ptr = main->map.map;
-	y = (((main->var.map_y + 1) * -1) + p_y) / 64;
+	y = (((main->var.map_y + main->var.speed) * -1) + p_y) / 64;
 	x[0] = ((main->var.map_x * -1) + p_x + 48) / 64;
 	x[1] = ((main->var.map_x * -1) + p_x + 16) / 64;
 	if (wall_collide(main, ptr[y][x[0]], x[0], y) == 0)
@@ -40,7 +40,7 @@ void	move_a(t_main *main, int p_y, int p_x)
 	int		x;
 	int		y[2];
 
-	x = (((main->var.map_x + 1) * -1) + p_x + 16) / 64;
+	x = (((main->var.map_x + main->var.speed) * -1) + p_x + 16) / 64;
 	y[0] = ((main->var.map_y * -1) + p_y + 16) / 64;
 	y[1] = ((main->var.map_y * -1) + p_y + 48) / 64;
 	ptr = main->map.map;
@@ -62,7 +62,7 @@ void	move_s(t_main *main, int p_y, int p_x)
 	int		y;
 	int		x[2];
 
-	y = (((main->var.map_y - 1) * -1) + p_y) / 64 + 1;
+	y = (((main->var.map_y - main->var.speed) * -1) + p_y) / 64 + 1;
 	x[0] = ((main->var.map_x * -1) + p_x + 16) / 64;
 	x[1] = ((main->var.map_x * -1) + p_x + 48) / 64;
 	ptr = main->map.map;
@@ -84,7 +84,7 @@ void	move_d(t_main *main, int p_y, int p_x)
 	int		x;
 	int		y[2];
 
-	x = (((main->var.map_x - 1) * -1) + p_x + 48) / 64;
+	x = (((main->var.map_x - main->var.speed) * -1) + p_x + 48) / 64;
 	y[0] = ((main->var.map_y * -1) + p_y + 16) / 64;
 	y[1] = ((main->var.map_y * -1) + p_y + 48) / 64;
 	ptr = main->map.map;

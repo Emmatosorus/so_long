@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:08:25 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 17:13:42 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:29:10 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static void	cpy_map(t_main *main)
 
 	cpy = (char **)malloc(main->map.s_map_size[1] * sizeof(char *));
 	if (!cpy)
-		error_exit(main, "Malloc has failed : solve_map.c : 20");
+		error_exit(main, "Malloc has failed : solve_map.c : 20\n");
 	i = 0;
 	while (main->map.s_map_size[1] > i)
 	{
 		cpy[i] = ft_strdup(main->map.s_map[i]);
 		if (!cpy[i])
 			cpy_error_exit(i, cpy, main, \
-				"ft_strdup has failed : solve_map.c : 26");
+				"ft_strdup has failed : solve_map.c : 26\n");
 		i++;
 	}
 	main->cpy.s_map = cpy;
@@ -82,7 +82,7 @@ static void	free_cpy(t_main *main, bool error)
 		free(main->cpy.s_map[i]);
 	free(main->cpy.s_map);
 	if (error)
-		error_exit(main, "Map isn't solvable");
+		error_exit(main, "Map isn't solvable\n");
 }
 
 void	solve_map(t_main *main)

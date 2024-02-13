@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 13:17:17 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:27:54 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ void	error_exit(t_main *main, char *reason)
 	ft_free_map(&main->map);
 	ft_free_xpm(main);
 	ft_free_mlx(main);
-	if (main->map.file_path != NULL)
-		free(main->map.file_path);
 	if (main->map.c_pos)
 		free(main->map.c_pos);
-	ft_printf(2, "\x1b[31;1mError\n%s\n\x1b[0m", reason);
+	ft_printf(2, "\x1b[31;1mError\n%s\x1b[0m", reason);
 	exit(EXIT_FAILURE);
 }
 
@@ -64,5 +62,5 @@ void	multiple_pos_error(t_main *main)
 		error_exit(main, "");
 	}
 	if (main->map.coins < 1)
-		error_exit(main, "Map must have at least 1 coin");
+		error_exit(main, "Map must have at least 1 coin\n");
 }

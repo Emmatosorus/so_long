@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:57:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 16:17:35 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:30:02 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	coin_init(t_main *main)
 	i = 0;
 	main->map.c_pos = malloc(sizeof(int [main->map.coins][3]));
 	if (!main->map.c_pos)
-		error_exit(main, "Malloc has failed : inits.c : 22");
+		error_exit(main, "Malloc has failed : inits.c : 22\n");
 	while (p[1] < main->map.map_size[1])
 	{
 		p[0] = 0;
@@ -44,7 +44,7 @@ void	make_xpm(t_main *main, char *path, int pos)
 {
 	main->var.xpm[pos] = (t_xpm *)malloc(sizeof(t_xpm));
 	if (!main->var.xpm[pos])
-		xpm_error_exit(pos, main, "Malloc has failed : inits.c : 46");
+		xpm_error_exit(pos, main, "Malloc has failed : inits.c : 46\n");
 	main->var.xpm[pos]->height = 0;
 	main->var.xpm[pos]->width = 0;
 	main->var.xpm[pos]->data.bits_per_pixel = 0;
@@ -55,21 +55,21 @@ void	make_xpm(t_main *main, char *path, int pos)
 	main->var.xpm[pos]->img = mlx_xpm_file_to_image(main->var.mlx, \
 		path, &main->var.xpm[pos]->width, &main->var.xpm[pos]->height);
 	if (!main->var.xpm[pos]->img)
-		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 55");
+		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 55\n");
 	main->var.xpm[pos]->data.addr = mlx_get_data_addr(\
 		main->var.xpm[pos]->img, \
 		&main->var.xpm[pos]->data.bits_per_pixel, \
 		&main->var.xpm[pos]->data.line_length, \
 		&main->var.xpm[pos]->data.endian);
 	if (!main->var.xpm[pos]->data.addr)
-		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 59");
+		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 59\n");
 }
 
 static void	xpm_inits(t_main *main)
 {
 	main->var.xpm = (t_xpm **)malloc(24 * sizeof(t_xpm *));
 	if (!main->var.xpm)
-		error_exit(main, "Malloc has failed : inits.c : 70");
+		error_exit(main, "Malloc has failed : inits.c : 70\n");
 	make_xpm(main, "sprites/actor/actor_down.xpm", 0);
 	make_xpm(main, "sprites/actor/actor_down_rev.xpm", 1);
 	make_xpm(main, "sprites/actor/actor_up.xpm", 2);
@@ -94,11 +94,11 @@ static void	window_init(t_main *main)
 {
 	main->var.mlx = mlx_init();
 	if (!main->var.mlx)
-		error_exit(main, "MLX has failed to initialize : inits.c");
+		error_exit(main, "MLX has failed to initialize : inits.c\n");
 	main->var.win = mlx_new_window(main->var.mlx, WIN_L, WIN_H, \
 		"It's so long..");
 	if (!main->var.win)
-		error_exit(main, "MLX has failed to create window : inits.c");
+		error_exit(main, "MLX has failed to create window : inits.c\n");
 }
 
 void	main_init(t_main *main)

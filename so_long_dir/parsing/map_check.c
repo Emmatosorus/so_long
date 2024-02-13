@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:37:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 13:18:43 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:30:42 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	is_wall(t_main *main, int y)
 	while (line[pos] != '\0')
 	{
 		if (line[pos] != '1')
-			error_exit(main, "Map isn't closed");
+			error_exit(main, "Map isn't closed\n");
 		pos++;
 	}
 }
@@ -47,7 +47,7 @@ void	count_assets(t_main *main, int x, int y)
 	else if (c == 'P' && main->map.player != 1)
 		multiple_pos_error(main);
 	else
-		error_exit(main, "Invalid argument");
+		error_exit(main, "Invalid argument\n");
 }
 
 void	is_closed_n_valid(t_main *main)
@@ -62,10 +62,10 @@ void	is_closed_n_valid(t_main *main)
 		while (main->map.s_map[pos[1]][pos[0]])
 		{
 			if (pos[0] == 0 && main->map.s_map[pos[1]][pos[0]] != '1')
-				error_exit(main, "Map isn't closed");
+				error_exit(main, "Map isn't closed\n");
 			if (pos[0] == main->map.s_map_size[0] - 1
 				&& main->map.s_map[pos[1]][pos[0]] != '1')
-				error_exit(main, "Map isn't closed");
+				error_exit(main, "Map isn't closed\n");
 			count_assets(main, pos[0], pos[1]);
 			pos[0]++;
 		}
@@ -90,7 +90,7 @@ void	check_len(t_main *main)
 		if (line == 0)
 			main->map.s_map_size[0] = len;
 		if (main->map.s_map_size[0] != len)
-			error_exit(main, "Map isn't a rectangle");
+			error_exit(main, "Map isn't a rectangle\n");
 		line++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 10:14:32 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:20:45 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <errno.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
 
@@ -26,6 +27,7 @@ typedef enum e_keycode
 	KEY_A = 97,
 	KEY_S = 115,
 	KEY_D = 100,
+	KEY_E = 101,
 	KEY_ESC = 65307,
 	KEY_SHIFT = 65505,
 	WIN_H = 1000,
@@ -101,6 +103,7 @@ void	file_error_exit(char *reason);
 void	error_exit(t_main *main, char *reason);
 void	xpm_error_exit(int pos, t_main *main, char *reason);
 void	cpy_error_exit(int pos, char **cpy, t_main *main, char *reason);
+void	map_error_exit(int pos, t_main *main, char *reason);
 void	ft_free_mlx(t_main *main);
 void	ft_free_xpm(t_main *main);
 int		ft_close(t_main *main);

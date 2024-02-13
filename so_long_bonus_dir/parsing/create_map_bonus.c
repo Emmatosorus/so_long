@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:57:27 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 16:13:09 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:28:33 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	allocate_map(t_main *main)
 	main->map.map = \
 		(char **)malloc(main->map.map_size[1] * sizeof(char *));
 	if (!main->map.map)
-		error_exit(main, "Malloc has failed : create_map.c : 35");
+		error_exit(main, "Malloc has failed : create_map.c : 35\n");
 	while (y < main->map.map_size[1])
 	{
 		x = -1;
@@ -44,7 +44,7 @@ void	allocate_map(t_main *main)
 		if (!main->map.map[y])
 		{
 			error_free_map(&main->map, y);
-			error_exit(main, "Malloc has failed : create_map.c : 42");
+			error_exit(main, "Malloc has failed : create_map.c : 42\n");
 		}
 		while (++x < main->map.map_size[0])
 			main->map.map[y][x] = 'B';

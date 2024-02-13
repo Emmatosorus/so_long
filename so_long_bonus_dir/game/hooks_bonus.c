@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:43:03 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 13:04:34 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:00:40 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_key_press(int keycode, t_main *main)
 {
 	if (keycode == KEY_ESC)
 		ft_close(main);
+	else if (keycode == KEY_E)
+		ft_printf(1, "\x1b[33;1m%d coins left!\n\x1b[0m", main->map.coins_left);
 	else if (keycode == KEY_SHIFT)
 		main->var.key_shift = true;
 	else if (keycode == KEY_W)

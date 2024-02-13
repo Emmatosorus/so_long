@@ -18,7 +18,7 @@ clean:
 	$(MAKE) -C so_long_bonus_dir clean
 
 fclean: clean
-	rm $(NAME) $(NAME_BONUS)
+	rm -rf $(NAME) $(NAME_BONUS)
 
 re: fclean all
 

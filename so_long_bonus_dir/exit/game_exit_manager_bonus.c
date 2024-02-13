@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 13:16:43 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:02:03 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	ft_close(t_main *main)
 	ft_free_mlx(main);
 	ft_free_s_map(&main->map);
 	ft_free_map(&main->map);
-	if (main->map.file_path != NULL)
-		free(main->map.file_path);
 	if (main->map.c_pos)
 		free(main->map.c_pos);
 	if (main->map.coins_left > 0 && main->var.hp > 1)
