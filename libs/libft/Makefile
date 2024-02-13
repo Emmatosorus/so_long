@@ -49,16 +49,16 @@ SRC = \
 	ft_printf/ft_printf_hex_functions.c \
 	get_next_line/get_next_line.c
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:%.c=%.o)
 
 # #################### Commands
 
 all: $(NAME)
 
-.c.o:
+%.o : %.c $(HDR)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME): $(OBJ) $(HDR)
+$(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 clean:

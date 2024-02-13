@@ -44,18 +44,18 @@ OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 #---------Rules---------#
 
-all :
+all : 
 	$(MAKE) mlx
 	$(MAKE) $(NAME)
 
-$(OBJ_DIR)%.o: %.c $(HDR) $(LIB_AR)
+$(OBJ_DIR)%.o: %.c $(HDR)
 	mkdir -p $(OBJ_DIR)exit/ $(OBJ_DIR)parsing/ $(OBJ_DIR)game/
 	$(CC) $(CFLAGS) $(XINCLUDE) -c $< -o $@
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(LIB_AR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(XINCLUDE) -L../libs/minilibx/ -lmlx $(XFLAG) $(FTLINKER)
 
-mlx:
+mlx: force
 	$(MAKE) -C ../libs/minilibx
 
 $(LIB_AR): force
@@ -67,4 +67,3 @@ clean:
 re: fclean all
 
 .PHONY: clean fclean all re mlx force
-

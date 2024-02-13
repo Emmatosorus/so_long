@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:06:24 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/11 19:46:06 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:17:17 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_free_map(t_parse *map)
 
 void	file_error_exit(char *reason)
 {
-	ft_printf("\x1b[31;1mError\n%s\n\x1b[0m", reason);
+	ft_printf(2, "\x1b[31;1mError\n%s\n\x1b[0m", reason);
 	exit(EXIT_FAILURE);
 }
 
@@ -45,7 +45,7 @@ void	error_exit(t_main *main, char *reason)
 		free(main->map.file_path);
 	if (main->map.c_pos)
 		free(main->map.c_pos);
-	ft_printf("\x1b[31;1mError\n%s\n\x1b[0m", reason);
+	ft_printf(2, "\x1b[31;1mError\n%s\n\x1b[0m", reason);
 	exit(EXIT_FAILURE);
 }
 
@@ -53,13 +53,13 @@ void	multiple_pos_error(t_main *main)
 {
 	if (main->map.player != 1)
 	{
-		ft_printf("\x1b[31;1m%d %s\n\x1b[0m", main->map.player, \
+		ft_printf(2, "\x1b[31;1m%d %s\n\x1b[0m", main->map.player, \
 			"player spawn points instead of 1");
 		error_exit(main, "");
 	}
 	if (main->map.exit != 1)
 	{
-		ft_printf("\x1b[31;1m%d %s\n\x1b[0m", main->map.exit, \
+		ft_printf(2, "\x1b[31;1m%d %s\n\x1b[0m", main->map.exit, \
 			"exits instead of 1");
 		error_exit(main, "");
 	}

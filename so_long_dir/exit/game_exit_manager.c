@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:27:17 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 16:15:51 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:15:52 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,15 @@ int	ft_close(t_main *main)
 	if (main->map.c_pos)
 		free(main->map.c_pos);
 	if (main->map.coins_left > 0)
-		ft_printf("\x1b[36;1mGoodbye! See you next time! UwU\n\x1b[0m");
+		ft_printf(1, "\x1b[36;1mGoodbye! See you next time! UwU\n\x1b[0m");
 	exit(EXIT_SUCCESS);
 	return (0);
 }
 
 void	end_game(t_main *main)
 {
-	ft_printf("\x1b[32;1mCongratulations\n\x1b[0m");
-	ft_printf("\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
+	ft_printf(1, "\x1b[32;1mCongratulations\n\x1b[0m");
+	ft_printf(1, "\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
 	main->var.moves / 64);
 	ft_close(main);
 }

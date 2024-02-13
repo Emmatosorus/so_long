@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:56:12 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/12 15:50:03 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:15:19 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	player_img_init(t_main *main)
 	if (!main->var.player.addr)
 		error_exit(main, "Couldn't get player image address");
 }
-
