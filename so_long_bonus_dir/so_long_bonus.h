@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:51:05 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 14:53:26 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:05:53 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	verify_map(t_main *main);
 void	solve_map(t_main *main);
 void	allocate_map(t_main *main);
 void	copy_s_map_to_map(t_main *main);
+void	make_forest(t_main *main, int *s_pos, int *pos);
 
 /* Initializations */
 void	map_img_init(t_main *main);

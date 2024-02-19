@@ -6,7 +6,7 @@
 /*   By: epolitze <epolitze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:57:27 by epolitze          #+#    #+#             */
-/*   Updated: 2024/02/13 14:28:33 by epolitze         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:05:57 by epolitze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static int	is_corner(t_main *main, int y, int x)
 void	copy_slot(t_main *main, int *s_pos, int *pos)
 {
 	if (main->map.s_map[s_pos[1]][s_pos[0]] != '1')
-		main->map.map[pos[1]][pos[0]] = main->map. \
-					s_map[s_pos[1]][s_pos[0]];
+		make_forest(main, s_pos, pos);
 	else
 	{
 		if (s_pos[1] == 0 && s_pos[0] != 0 && s_pos[0] != \
