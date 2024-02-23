@@ -30,6 +30,7 @@ SRC = \
 	parsing/map_check_bonus.c \
 	parsing/solve_map_bonus.c \
 	parsing/create_map_bonus.c \
+	parsing/forest_maker_bonus.c \
 	game/game_bonus.c \
 	game/hooks_bonus.c \
 	game/inits_bonus.c \
