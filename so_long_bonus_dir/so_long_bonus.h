@@ -95,9 +95,11 @@ typedef struct s_var
 
 typedef struct s_main
 {
-	t_var	var;
-	t_parse	map;
-	t_parse	cpy;
+	t_var			var;
+	t_parse			map;
+	t_parse			cpy;
+	struct timeval	start;
+	struct timeval	end;
 }			t_main;
 
 /* Error Management */

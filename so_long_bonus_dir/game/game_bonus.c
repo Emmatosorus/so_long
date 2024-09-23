@@ -84,6 +84,7 @@ void	game(t_main *main)
 {
 	main_init(main);
 	build_map(main);
+	gettimeofday(&main->start, NULL);
 	mlx_loop_hook(main->var.mlx, ft_ref, main);
 	mlx_hook(main->var.win, 2, 1L << 0, ft_key_press, main);
 	mlx_hook(main->var.win, 3, 1L << 1, ft_key_release, main);
