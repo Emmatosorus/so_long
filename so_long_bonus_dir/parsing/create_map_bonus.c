@@ -67,26 +67,21 @@ static int	is_corner(t_main *main, int y, int x)
 
 void	copy_slot(t_main *main, int *s_pos, int *pos)
 {
-	if (main->map.s_map[s_pos[1]][s_pos[0]] != '1')
-		make_forest(main, s_pos, pos);
+	if (s_pos[1] == 0 && s_pos[0] != 0 && s_pos[0] != \
+		main->map.s_map_size[0] - 1)
+		main->map.map[pos[1]][pos[0]] = 'U';
+	else if (s_pos[1] == main->map.s_map_size[1] - 1 && s_pos[0] != 0
+		&& s_pos[0] != main->map.s_map_size[0] - 1)
+		main->map.map[pos[1]][pos[0]] = 'D';
+	else if (s_pos[0] == main->map.s_map_size[0] - 1 && s_pos[1] != 0
+		&& s_pos[1] != main->map.s_map_size[1] - 1)
+		main->map.map[pos[1]][pos[0]] = 'R';
+	else if (s_pos[0] == 0 && s_pos[1] != 0
+		&& s_pos[1] != main->map.s_map_size[1] - 1)
+		main->map.map[pos[1]][pos[0]] = 'L';
 	else
-	{
-		if (s_pos[1] == 0 && s_pos[0] != 0 && s_pos[0] != \
-			main->map.s_map_size[0] - 1)
-			main->map.map[pos[1]][pos[0]] = 'U';
-		else if (s_pos[1] == main->map.s_map_size[1] - 1 && s_pos[0] != 0
-			&& s_pos[0] != main->map.s_map_size[0] - 1)
-			main->map.map[pos[1]][pos[0]] = 'D';
-		else if (s_pos[0] == main->map.s_map_size[0] - 1 && s_pos[1] != 0
-			&& s_pos[1] != main->map.s_map_size[1] - 1)
-			main->map.map[pos[1]][pos[0]] = 'R';
-		else if (s_pos[0] == 0 && s_pos[1] != 0
-			&& s_pos[1] != main->map.s_map_size[1] - 1)
-			main->map.map[pos[1]][pos[0]] = 'L';
-		else
-			main->map.map[pos[1]][pos[0]] = main->map. \
-				s_map[s_pos[1]][s_pos[0]];
-	}
+		main->map.map[pos[1]][pos[0]] = main->map. \
+			s_map[s_pos[1]][s_pos[0]];
 	if (is_corner(main, s_pos[1], s_pos[0]) == 1)
 		main->map.map[pos[1]][pos[0]] = 'B';
 }

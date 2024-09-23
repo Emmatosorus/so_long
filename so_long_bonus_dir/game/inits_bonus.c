@@ -55,19 +55,21 @@ void	make_xpm(t_main *main, char *path, int pos)
 	main->var.xpm[pos]->img = mlx_xpm_file_to_image(main->var.mlx, \
 		path, &main->var.xpm[pos]->width, &main->var.xpm[pos]->height);
 	if (!main->var.xpm[pos]->img)
-		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 55\n");
+		xpm_error_exit(pos, main, \
+			"MLX has failed us once more : inits.c : 55\n");
 	main->var.xpm[pos]->data.addr = mlx_get_data_addr(\
 		main->var.xpm[pos]->img, \
 		&main->var.xpm[pos]->data.bits_per_pixel, \
 		&main->var.xpm[pos]->data.line_length, \
 		&main->var.xpm[pos]->data.endian);
 	if (!main->var.xpm[pos]->data.addr)
-		xpm_error_exit(pos, main, "MLX has failed us once more : inits.c : 65\n");
+		xpm_error_exit(pos, main, \
+			"MLX has failed us once more : inits.c : 65\n");
 }
 
 static void	xpm_inits(t_main *main)
 {
-	main->var.xpm = (t_xpm **)malloc(25 * sizeof(t_xpm *));
+	main->var.xpm = (t_xpm **)malloc(26 * sizeof(t_xpm *));
 	if (!main->var.xpm)
 		error_exit(main, "Malloc has failed : inits.c : 43");
 	make_xpm(main, "sprites/actor/actor_down.xpm", 0);

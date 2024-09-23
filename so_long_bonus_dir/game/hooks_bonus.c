@@ -37,8 +37,6 @@ int	ft_key_press(int keycode, t_main *main)
 {
 	if (keycode == KEY_ESC)
 		ft_close(main);
-	else if (keycode == KEY_E)
-		ft_printf(1, "\x1b[33;1m%d coins left!\n\x1b[0m", main->map.coins_left);
 	else if (keycode == KEY_SHIFT)
 		main->var.key_shift = true;
 	else if (keycode == KEY_W)

@@ -41,7 +41,8 @@ void	player_img_init(t_main *main)
 	main->var.player.endian = 0;
 	main->var.player.img = mlx_new_image(main->var.mlx, 64, 64);
 	if (!main->var.player.img)
-		error_exit(main, "Couldn't create player image : asset_inits_bonus.c\n");
+		error_exit(main, \
+			"Couldn't create player image : asset_inits_bonus.c\n");
 	main->var.player.addr = mlx_get_data_addr(\
 		main->var.player.img, \
 		&main->var.player.bits_per_pixel, \
@@ -58,4 +59,5 @@ void	make_banners(t_main *main)
 	make_xpm(main, "sprites/assets/heart.xpm", 22);
 	make_xpm(main, "sprites/assets/heart_background.xpm", 23);
 	make_xpm(main, "sprites/assets/credits.xpm", 24);
+	make_xpm(main, "sprites/assets/coin_asset.xpm", 25);
 }

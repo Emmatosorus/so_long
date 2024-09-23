@@ -70,6 +70,12 @@ int	ft_ref(t_main *main)
 		"Move : ");
 	nb = ft_itoa(main->var.moves / 64);
 	mlx_string_put(main->var.mlx, main->var.win, 45, 19, 0xffffff, nb);
+	mlx_put_image_to_window(main->var.mlx, main->var.win, \
+		main->var.xpm[21]->img, 80, 0);
+	mlx_put_image_to_window(main->var.mlx, main->var.win, \
+		main->var.xpm[25]->img, 85, 3);
+	nb = ft_itoa(main->map.coins_left);
+	mlx_string_put(main->var.mlx, main->var.win, 115, 19, 0xffffff, nb);
 	free(nb);
 	return (0);
 }

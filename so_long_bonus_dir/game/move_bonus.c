@@ -14,10 +14,17 @@
 
 void	move_w(t_main *main, int p_y, int p_x)
 {
-	char	**ptr;
-	int		y;
-	int		x[2];
+	char					**ptr;
+	int						y;
+	int						x[2];
+	struct timeval			time;
+	static struct timeval	last_time;
 
+	gettimeofday(&time, NULL);
+	if ((time.tv_usec - last_time.tv_usec) + \
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		return ;
+	gettimeofday(&last_time, NULL);
 	ptr = main->map.map;
 	y = (((main->var.map_y + main->var.speed) * -1) + p_y) / 64;
 	x[0] = ((main->var.map_x * -1) + p_x + 48) / 64;
@@ -36,10 +43,17 @@ void	move_w(t_main *main, int p_y, int p_x)
 
 void	move_a(t_main *main, int p_y, int p_x)
 {
-	char	**ptr;
-	int		x;
-	int		y[2];
+	char					**ptr;
+	int						x;
+	int						y[2];
+	struct timeval			time;
+	static struct timeval	last_time;
 
+	gettimeofday(&time, NULL);
+	if ((time.tv_usec - last_time.tv_usec) + \
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		return ;
+	gettimeofday(&last_time, NULL);
 	x = (((main->var.map_x + main->var.speed) * -1) + p_x + 16) / 64;
 	y[0] = ((main->var.map_y * -1) + p_y + 16) / 64;
 	y[1] = ((main->var.map_y * -1) + p_y + 48) / 64;
@@ -58,10 +72,17 @@ void	move_a(t_main *main, int p_y, int p_x)
 
 void	move_s(t_main *main, int p_y, int p_x)
 {
-	char	**ptr;
-	int		y;
-	int		x[2];
+	char					**ptr;
+	int						y;
+	int						x[2];
+	struct timeval			time;
+	static struct timeval	last_time;
 
+	gettimeofday(&time, NULL);
+	if ((time.tv_usec - last_time.tv_usec) + \
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		return ;
+	gettimeofday(&last_time, NULL);
 	y = (((main->var.map_y - main->var.speed) * -1) + p_y) / 64 + 1;
 	x[0] = ((main->var.map_x * -1) + p_x + 16) / 64;
 	x[1] = ((main->var.map_x * -1) + p_x + 48) / 64;
@@ -80,10 +101,17 @@ void	move_s(t_main *main, int p_y, int p_x)
 
 void	move_d(t_main *main, int p_y, int p_x)
 {
-	char	**ptr;
-	int		x;
-	int		y[2];
+	char					**ptr;
+	int						x;
+	int						y[2];
+	struct timeval			time;
+	static struct timeval	last_time;
 
+	gettimeofday(&time, NULL);
+	if ((time.tv_usec - last_time.tv_usec) + \
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		return ;
+	gettimeofday(&last_time, NULL);
 	x = (((main->var.map_x - main->var.speed) * -1) + p_x + 48) / 64;
 	y[0] = ((main->var.map_y * -1) + p_y + 16) / 64;
 	y[1] = ((main->var.map_y * -1) + p_y + 48) / 64;

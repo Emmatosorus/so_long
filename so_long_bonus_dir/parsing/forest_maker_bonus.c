@@ -17,5 +17,5 @@ void	make_forest(t_main *main, int *s_pos, int *pos)
 	(void)main;
 	(void)s_pos;
 	(void)pos;
-	//if (s_pos[1] != 0 && main->map.s_map[s_pos[1] - 1][s_pos[0]])
 }
+	//if (s_pos[1] != 0 && main->map.s_map[s_pos[1] - 1][s_pos[0]])
