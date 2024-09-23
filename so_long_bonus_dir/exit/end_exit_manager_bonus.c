@@ -49,10 +49,16 @@ void	end_game(t_main *main)
 		ft_printf(1, \
 			"\x1b[32;1mYou completed this level in %d moves!\n\x1b[0m", \
 			(main->var.moves / 64) + 1);
-		ft_printf(1, \
-			"\x1b[32;1mAnd in %d seconds and %d miliseconds!\n\x1b[0m", \
-				(main->end.tv_sec - main->start.tv_sec), \
-				((main->end.tv_usec / 1000) - (main->start.tv_usec / 1000)));
+		if (main->end.tv_usec > main->start.tv_usec)
+			ft_printf(1, \
+				"\x1b[32;1mAnd in %d seconds and %d miliseconds!\n\x1b[0m", \
+					(main->end.tv_sec - main->start.tv_sec), \
+					((main->end.tv_usec / 1000) - (main->start.tv_usec / 1000)));
+		else
+			ft_printf(1, \
+				"\x1b[32;1mAnd in %d seconds and %d miliseconds!\n\x1b[0m", \
+					(main->end.tv_sec - main->start.tv_sec), \
+					((main->start.tv_usec / 1000) - (main->end.tv_usec / 1000)));
 		j = false;
 	}
 	mlx_loop_hook(main->var.mlx, credits, main);

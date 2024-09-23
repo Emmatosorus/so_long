@@ -32,7 +32,7 @@ int	ft_move(t_main *main)
 
 	p_y = main->var.player_y;
 	p_x = main->var.player_x;
-	main->var.speed = 4;
+	main->var.speed = 5;
 	choose_speed(main);
 	if (main->var.key_shift)
 		main->var.speed *= 1.5;
