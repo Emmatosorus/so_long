@@ -12,6 +12,19 @@
 
 #include "../so_long_bonus.h"
 
+void	choose_speed(t_main *main)
+{
+	if (main->var.key_w && (main->var.key_a || main->var.key_d))
+		main->var.speed = 3;
+	else if (main->var.key_s && (main->var.key_a || main->var.key_d))
+		main->var.speed = 3;
+	else if (main->var.key_a && (main->var.key_w || main->var.key_s))
+		main->var.speed = 3;
+	else if (main->var.key_d && (main->var.key_w || main->var.key_s))
+		main->var.speed = 3;
+
+}
+
 int	ft_move(t_main *main)
 {
 	int		p_y;
@@ -19,9 +32,10 @@ int	ft_move(t_main *main)
 
 	p_y = main->var.player_y;
 	p_x = main->var.player_x;
-	main->var.speed = 1;
+	main->var.speed = 4;
+	choose_speed(main);
 	if (main->var.key_shift)
-		main->var.speed = 2;
+		main->var.speed *= 1.5;
 	if (main->var.key_w)
 		move_w(main, p_y, p_x);
 	if (main->var.key_a)

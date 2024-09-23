@@ -22,7 +22,7 @@ void	move_w(t_main *main, int p_y, int p_x)
 
 	gettimeofday(&time, NULL);
 	if ((time.tv_usec - last_time.tv_usec) + \
-		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= MOVE_SPEED)
 		return ;
 	gettimeofday(&last_time, NULL);
 	ptr = main->map.map;
@@ -51,7 +51,7 @@ void	move_a(t_main *main, int p_y, int p_x)
 
 	gettimeofday(&time, NULL);
 	if ((time.tv_usec - last_time.tv_usec) + \
-		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= MOVE_SPEED)
 		return ;
 	gettimeofday(&last_time, NULL);
 	x = (((main->var.map_x + main->var.speed) * -1) + p_x + 16) / 64;
@@ -80,7 +80,7 @@ void	move_s(t_main *main, int p_y, int p_x)
 
 	gettimeofday(&time, NULL);
 	if ((time.tv_usec - last_time.tv_usec) + \
-		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= MOVE_SPEED)
 		return ;
 	gettimeofday(&last_time, NULL);
 	y = (((main->var.map_y - main->var.speed) * -1) + p_y) / 64 + 1;
@@ -109,7 +109,7 @@ void	move_d(t_main *main, int p_y, int p_x)
 
 	gettimeofday(&time, NULL);
 	if ((time.tv_usec - last_time.tv_usec) + \
-		(time.tv_sec - last_time.tv_sec) * 1000000 <= 1500)
+		(time.tv_sec - last_time.tv_sec) * 1000000 <= MOVE_SPEED)
 		return ;
 	gettimeofday(&last_time, NULL);
 	x = (((main->var.map_x - main->var.speed) * -1) + p_x + 48) / 64;

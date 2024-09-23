@@ -14,6 +14,7 @@
 # define SO_LONG_BONUS_H
 
 # include <unistd.h>
+# include <math.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -21,6 +22,8 @@
 # include <errno.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
+
+#define MOVE_SPEED 10000
 
 typedef enum e_keycode
 {
