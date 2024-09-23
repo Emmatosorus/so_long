@@ -15,11 +15,29 @@
 int	what_img(int x, int y, char **map)
 {
 	char	c;
+	static int	rdm = 1;
+	int			nb;
+	int			count;
 
 	x /= 64;
 	y /= 64;
 	c = map[y][x];
-	if (c == '0' || c == 'P' || c == 'C')
+	if (c == '0' || c == 'P')
+	{
+		rdm++;
+		count = 0;
+		srand(0);
+		while (count++ < rdm)
+			nb = rand();
+		if (nb % 13)
+			return (8);
+		else if (!(nb % 21))
+			return (27);
+		else if (!(nb % 22))
+			return (28);
+		return (26);
+	}
+	else if (c == 'C')
 		return (8);
 	else if (c == '1')
 		return (9);

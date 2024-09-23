@@ -69,7 +69,7 @@ void	make_xpm(t_main *main, char *path, int pos)
 
 static void	xpm_inits(t_main *main)
 {
-	main->var.xpm = (t_xpm **)malloc(26 * sizeof(t_xpm *));
+	main->var.xpm = (t_xpm **)malloc(29 * sizeof(t_xpm *));
 	if (!main->var.xpm)
 		error_exit(main, "Malloc has failed : inits.c : 43");
 	make_xpm(main, "sprites/actor/actor_down.xpm", 0);

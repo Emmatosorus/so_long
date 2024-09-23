@@ -60,4 +60,7 @@ void	make_banners(t_main *main)
 	make_xpm(main, "sprites/assets/heart_background.xpm", 23);
 	make_xpm(main, "sprites/assets/credits.xpm", 24);
 	make_xpm(main, "sprites/assets/coin_asset.xpm", 25);
+	make_xpm(main, "sprites/world/bush.xpm", 26);
+	make_xpm(main, "sprites/world/flower.xpm", 27);
+	make_xpm(main, "sprites/world/trunc.xpm", 28);
 }
