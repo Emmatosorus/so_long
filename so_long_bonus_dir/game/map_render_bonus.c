@@ -27,6 +27,7 @@ int	what_img(int x, int y, char **map)
 		rdm++;
 		count = 0;
 		srand(0);
+		nb = 0;
 		while (count++ < rdm)
 			nb = rand();
 		if (nb % 13)
