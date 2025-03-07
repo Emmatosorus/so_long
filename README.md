@@ -3,11 +3,11 @@ A small and chill 2D game written in **C**. You navigate and collect coins. Once
 
 ## → Installation ⚙️
 **1 -** Clone the repository:
-```
+```sh
 git clone https://github.com/Emmatosorus/so_long.git
 ```
 **2 -** If you want the **full experience** ✨💅:
-```
+```sh
 cd so_long/so_long_bonus_dir
 make
 cd ..
@@ -15,7 +15,7 @@ cd ..
 **OR**
 
 **2 -** If you prefer a **simpler experience** (less HUD and less map details) 🥺:
-```
+```sh
 cd so_long/so_long_dir
 make
 cd ..
@@ -25,11 +25,11 @@ cd ..
 The different maps are stored in the `levels/` directory
 
 If you chose the **full experience**:
-```
+```sh
 ./so_long_bonus levels/<the map you want to open>
 ```
 If you chose the **simpler experience**:
-```
+```sh
 ./so_long levels/<the map you want to open>
 ```
 ⚠️ **WARNING** Maps containing the `_bonus` in there name cannot be opened with the simpler experience. ⚠️
@@ -57,11 +57,11 @@ And this syntax :
 If your map doesn't follow a rule, an error message will be displayed in the terminal. 🚨
 
 **3 -** Now you can run the game 🥳
-```
+```sh
 ./so_long_bonus /path/to/your/map/file
 ```
 or
-```
+```sh
 ./so_long /path/to/your/map/file
 ```
 
