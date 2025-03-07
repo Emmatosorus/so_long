@@ -22,7 +22,7 @@ cd ..
 ```
 
 ## → Running the game 🎮
-The different maps are stored in the `levels/` directory 📁
+The different maps are stored in the `levels/` directory
 
 If you chose the **full experience**:
 ```
@@ -32,7 +32,7 @@ If you chose the **simpler experience**:
 ```
 ./so_long levels/<the map you want to open>
 ```
-⚠️ **WARNING** Maps containing the `_bonus` in there name cannot be opened with the simpler experience.
+⚠️ **WARNING** Maps containing the `_bonus` in there name cannot be opened with the simpler experience. ⚠️
 
 ## → Create your own maps! 🛠️
 So_long is not just a game, it's also a game engine of sorts! ✨
@@ -41,18 +41,18 @@ So_long is not just a game, it's also a game engine of sorts! ✨
 **1 -** Create a file with **any** name you want and add **.ber** at the end.
 
 **2 -** Inside the file, create your map following these rules:
-  - The map must be **rectangular**. 🟩⬛
-  - The map must be **enclosed** (surrounded by walls). 🏰
-  - The map must contain **1 starting position**, **1 exit**, and **at least 1 coin**. 💰🚪
-  - The map must be **finishable** (all coins must be accessible). 🎯
+  - The map must be **rectangular**.
+  - The map must be **enclosed** (surrounded by walls).
+  - The map must contain **1 starting position**, **1 exit**, and **at least 1 coin**.
+  - The map must be **finishable** (all coins must be accessible). 
       
 And this syntax :
-  - `0` for an empty space 🟩
-  - `1` for a wall 🧱
-  - `C` for a coin 💰
-  - `E` for the exit 🚪
-  - `P` for the player’s starting position 🧑‍🚀
-  - `F` for a bramble bush 🌿 (**ONLY FOR FULL EXPERIENCE MAPS**)
+  - `0` for an empty space
+  - `1` for a wall
+  - `C` for a coin
+  - `E` for the exit
+  - `P` for the player’s starting position
+  - `F` for a bramble bush (**ONLY FOR FULL EXPERIENCE MAPS**)
   
 If your map doesn't follow a rule, an error message will be displayed in the terminal. 🚨
 
@@ -69,7 +69,7 @@ or
 - **WASD** to move around 🕹️
 - **Shift** to sprint 💨
 - **Escape** to exit ❌
-- **E** to display the remaining number of coins in the terminal 💰 (**ONLY IN THE SIMPLER EXPERIENCE**)
+- **E** to display the remaining number of coins in the terminal (**ONLY IN THE SIMPLER EXPERIENCE**)
 
 ## → Some pictures
 ![Illustration 1](https://github.com/Emmatosorus/so_long/blob/main/sprites/repo/illustration1.png?raw=true)
